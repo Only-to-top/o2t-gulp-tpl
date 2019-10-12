@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>SiteName</title>
+    <meta name="description" content="Описание">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="icon" href="./img/favicon/favicon.ico">
+    
+    <meta name="theme-color" content="#812b90">
+    <meta name="msapplication-navbutton-color" content="#812b90">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#812b90">
+
+    <link rel="stylesheet" href="./css/libs.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+</head>
+
+<body>
+
+
+
+
+
+<!-- gamburger-btn-menu -->
+<button class="hamburger hamburger--spring" type="button">
+    <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+</button>
+
+
+
+
+
+
+
+
+
+<a data-src="#popupForm" data-fancybox data-type="inline" class="btn btn-accent">Оставить заявку</a>
+
+<a href="./img/full-img.jpg" data-fancybox="gallery" class="class" data-options='{"caption" : "Описание"}'>
+    <img src="./img/thumbnail.jpg" /> <!-- thumb -->
+</a>
+
+
+
+<div class="header-swiper-container">
+
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+    </div>
+    <div class="swiper-pagination"></div> <!-- If we need pagination -->
+    <!-- If we need navigation buttons -->
+    <div class="swiper-buttons"><div class="swiper-button-prev"></div><div class="swiper-button-next"></div></div>
+
+</div><!-- / slider -->
+
+
+
+<form class="form hidden" id="popupForm">
+    <input type="hidden" name="project_name" value="SiteName">
+    <input type="hidden" name="admin_email" value="rlytrue2@gmail.com">
+    <!-- <input type="hidden" name="admin_email" value="<?php/* echo get_option('admin_email') */?>"> -->
+    <input type="hidden" name="form_subject" value="Форма с подвала сайта SiteName">
+
+    <div class="container">
+        <div class="form__title">Оставьте заявку и мы вам перезвоним</div>
+
+        <div class="row">
+
+            <div class="col-sm-12 col-md-6">
+                <input type="text" name="Имя" placeholder="Имя">
+                <input type="tel" name="Телефон" placeholder="Телефон">
+                <input type="email" name="E-mail" placeholder="E-mail*" required>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <textarea name="Собщение" placeholder="Собщение"></textarea>
+            </div>
+
+            <div class="col-12 tac">
+                <button class="btn form__btn">Отправить</button>
+                <small>Нажимая кнопку вы соглашаетесь <br>с обработкой своих <a href="#">персональных данных</a></small>
+            </div>
+
+        </div><!-- / row -->
+    </div>
+
+</form>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/libs.min.js"></script>
+    <script src="./js/scripts.js"></script>
+</body>
+</html>

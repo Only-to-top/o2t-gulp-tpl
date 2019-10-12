@@ -1,0 +1,23 @@
+// 100 Extra Light (сверх легкий) or Ultra Light (ультра легкий)
+// 200 Light (легкий) or Thin (тонкий);
+// 300 Book (ровный) or Demi;
+// 400 Regular (Стандартный) or Normal (нормальный);
+// 500 Medium (средний);
+// 600 Semibold or Demibold (полужирный);
+// 700 Bold (жирный);
+// 800 Black (очень жирный) or Extra Bold (более ижрный) or Heavy (насыщенный жирный);
+// 900 Extra Black (сверхжирный) or Fat or Ultra Black (ультражирный)
+
+@mixin font($f-name, $f-style, $f-weight, $f-url)
+    @font-face
+        font-family: $f-name
+        font-display: swap
+        font-style: $f-style
+        font-weight: $f-weight
+        src: url($f-url) format('woff')
+
+@include font('Roboto', normal, 200, '../fonts/RobotoThin.woff.woff')
+@include font('Roboto', normal, 300, '../fonts/RobotoLight.woff')
+@include font('Roboto', normal, 400, '../fonts/RobotoRegular.woff')
+@include font('Roboto', normal, 500, '../fonts/RobotoMedium.woff')
+@include font('Roboto', normal, 700, '../fonts/RobotoBold.woff')

@@ -1,0 +1,121 @@
+@import "vars"
+
+::selection
+    background-color: $accent
+    color: #fff
+
+select:focus,
+select:hover,
+option:hover,
+option:focus,
+.form-control:focus,
+    box-shadow: none!important
+    border: none
+    outline: none
+    border: transparent
+
+select[disabled]
+    cursor: not-allowed
+
+label, a
+    user-select: none
+
+button, a,
+* [role="button"],
+input, textarea
+    &:focus
+      outline: none
+
+a:not([href]):not([tabindex])
+    color: $textAll
+
+button
+    border: none
+
+body
+    font-size: 16px
+    font-family: $defaultFont
+    color: $textAll
+    line-height: 1.6
+
+    background-color: #ccc
+
+    min-width: 320px
+    min-height: 100vh
+    position: relative
+    overflow-x: hidden
+    input, textarea
+        &:valid,
+        &:focus:valid,
+        &:focus:required:valid,
+        &:invalid
+            border-color: $textForm
+            color: $textForm
+            box-shadow: none
+        &:focus:invalid,
+        &:focus:required:invalid
+            box-shadow: none
+            border-color: #e57373
+            color: $textForm
+            &::placeholder
+                color: #e57373
+
+::placeholder
+    color: $textPlaceholder
+
+input[type="number"]
+    -moz-appearance: textfield
+
+input[type="number"]:focus,
+input[type="number"]:hover
+    -moz-appearance: number-input
+
+ul, ol
+    list-style-position: inside
+    margin: 0
+    padding: 0
+
+
+@media only screen and (max-width: 576px)
+    .container
+        overflow: hidden
+    .header
+        .container
+            overflow: visible
+
+.img-resp
+    display: block
+    max-width: 100%
+    height: auto
+
+.tal
+    text-align: left
+.tac
+    text-align: center
+.tar
+    text-align: right
+
+b, strong
+    font-weight: 700
+
+.container-fluid
+    max-width: 1660px
+
+.hidden
+    display: none
+
+.btn
+    cursor: pointer
+    border-radius: $bradBtn
+    padding: 12px 35px
+    margin-bottom: 20px
+
+    background-color: $accent
+    color: $textAll
+    font-size: 18px
+
+a
+    transition: .25s all
+    &:hover
+        text-decoration: none
+        color: $accent
