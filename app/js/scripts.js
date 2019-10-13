@@ -31,7 +31,12 @@ jQuery(function($) {
         });
     };
 
-
+    
+    // anchor link => title popup
+    $('a[data-src="#main-form"]').click(function(){
+        $("#main-form .title").html( $(this).text() ); //текст ссылки вставляем в название модального окна
+    });
+ 
 
     // popup
     $('[data-fancybox]').fancybox({
@@ -84,13 +89,13 @@ jQuery(function($) {
     });
 
 
-    // Заголовок всплывающего окна = тексту кнопки
+    // anchor link => title popup
     $('a[data-src="#popupForm"]').click(function(){
         $("#popupForm .title").html( $(this).text() ); //текст ссылки вставляем в название модального окна
     });
 
 
-    //Скрыть блок при клике вне его
+    // hide block on click outside
     if ( $(window).width() < 768 ) {
         $(document).mouseup(function (e) {
             var container = $(".search--show");
@@ -110,8 +115,6 @@ jQuery(function($) {
         grabCursor: true, // рука
         loop: true,
         slidesPerView: 3, // кол-во слайдов
-        // effect: 'fade', // для slidesPerView: 1
-        // centeredSlides: true, //центрировать
         breakpoints: {
           1200: { // < 1200
             slidesPerView: 2,
