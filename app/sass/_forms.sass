@@ -14,9 +14,13 @@
         padding: 15px 20px
         border-radius: $bradInput
         border: 1px solid #999
+        background-color: #fff
+        transition: .25s all ease
         &::placeholder
             color: #333
             opacity: 1
+        &:focus
+            background-color: darken(#fff, 3%)
     textarea
         resize: vertical
         height: calc(100% - 30px)
