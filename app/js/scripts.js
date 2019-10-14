@@ -1,12 +1,12 @@
 `use strict`
 
-jQuery(function($) {
+jQuery(function ($) {
 
 
     // menu
     const menu = $('.header-menu');
-    const menuOpen = function() {
-        if ( $(this).hasClass('is-active') ) {
+    const menuOpen = function () {
+        if ($(this).hasClass('is-active')) {
             $(this).removeClass('is-active');
             menu.stop().slideUp();
         } else {
@@ -17,26 +17,26 @@ jQuery(function($) {
     $('.hamburger').on('click', menuOpen);
 
     // close menu
-    if ( $(window).width() < 768 ) {
+    if ($(window).width() < 768) {
         $(document).mouseup(function (e) { //Скрыть меню при клике вне его
             const hamburger = $('.hamburger');
 
-            if ( (menu.has(e.target).length === 0) && (hamburger.has(e.target).length === 0) ) {
+            if ((menu.has(e.target).length === 0) && (hamburger.has(e.target).length === 0)) {
                 menu.stop().slideUp();
 
-                if ( hamburger.hasClass('is-active') ) {
+                if (hamburger.hasClass('is-active')) {
                     hamburger.removeClass('is-active');
                 };
             };
         });
     };
 
-    
+
     // anchor link => title popup
-    $('a[data-src="#main-form"]').click(function(){
-        $("#main-form .title").html( $(this).text() ); //текст ссылки вставляем в название модального окна
+    $('a[data-src="#main-form"]').click(function () {
+        $("#main-form .title").html($(this).text()); //текст ссылки вставляем в название модального окна
     });
- 
+
 
     // popup
     $('[data-fancybox]').fancybox({
@@ -61,17 +61,17 @@ jQuery(function($) {
 
 
     //E-mail Ajax Send
-    const ajaxSend = function(e) {
+    const ajaxSend = function (e) {
         e.preventDefault();
         const th = $(this);
         $.ajax({
             type: "POST",
             url: "./mail.php",
             data: th.serialize()
-        }).done(function() {
+        }).done(function () {
             $('.fancybox-close-small').click(); // close fancy popup
             swal({ title: 'Сообщение отправлено', type: 'success' });
-            setTimeout(function() { // Done Functions
+            setTimeout(function () { // Done Functions
                 th.trigger("reset");
             }, 1000);
         });
@@ -80,8 +80,8 @@ jQuery(function($) {
 
 
     // Checked input type checkbox ?
-    $('.btn-send-form').on('click', function(){
-        if ( $('form input[type=checkbox]').is(':checked') ) {
+    $('.btn-send-form').on('click', function () {
+        if ($('form input[type=checkbox]').is(':checked')) {
             $('form .checkbox-new').removeClass('red');
         } else {
             $('form .checkbox-new').addClass('red');
@@ -90,16 +90,16 @@ jQuery(function($) {
 
 
     // anchor link => title popup
-    $('a[data-src="#popupForm"]').click(function(){
-        $("#popupForm .title").html( $(this).text() ); //текст ссылки вставляем в название модального окна
+    $('a[data-src="#popupForm"]').click(function () {
+        $("#popupForm .title").html($(this).text()); //текст ссылки вставляем в название модального окна
     });
 
 
     // hide block on click outside
-    if ( $(window).width() < 768 ) {
+    if ($(window).width() < 768) {
         $(document).mouseup(function (e) {
             var container = $(".search--show");
-            if (container.has(e.target).length === 0){
+            if (container.has(e.target).length === 0) {
                 container.fadeOut();
             };
         });
@@ -116,57 +116,57 @@ jQuery(function($) {
         loop: true,
         slidesPerView: 3, // кол-во слайдов
         breakpoints: {
-          1200: { // < 1200
-            slidesPerView: 2,
-          },
-          992: { // < 992
-            slidesPerView: 2,
-          },
-          768: { // < 768
-            slidesPerView: 1,
-          },
-          576: { // < 576
-            slidesPerView: 1.5,
-            spaceBetween: 15,
-          },
+            1200: { // < 1200
+                slidesPerView: 2,
+            },
+            992: { // < 992
+                slidesPerView: 2,
+            },
+            768: { // < 768
+                slidesPerView: 1,
+            },
+            576: { // < 576
+                slidesPerView: 1.5,
+                spaceBetween: 15,
+            },
         }
     });
     // stop autoplay swiper on hover
-    $(".header-swiper-container").hover(function() {
+    $(".header-swiper-container").hover(function () {
         (this).swiper.autoplay.stop();
-    }, function() {
+    }, function () {
         (this).swiper.autoplay.start();
     });
 
 
     // scroll to top
     $("#element, #element2").on("click", "a", function (event) {
-      event.preventDefault();
-      var id = $(this).attr('href'), top = $(id).offset().top;
-      $('body, html').animate({scrollTop: top}, 1500);
+        event.preventDefault();
+        var id = $(this).attr('href'), top = $(id).offset().top;
+        $('body, html').animate({ scrollTop: top }, 1500);
     });
 
 
-    $('input[type="tel"]').mask('+7 (000) 000-00-00', { placeholder: "+7 (___) ___-__-__"} );
+    $('input[type="tel"]').mask('+7 (000) 000-00-00', { placeholder: "+7 (___) ___-__-__" });
 
 
     // equal heights
     const maxHeightEl = 0;
-    $("itemName").each(function(){
+    $("itemName").each(function () {
         if ($(this).height() > maxHeightEl) { maxHeightEl = $(this).height(); }
     });
     $("itemName").height(maxHeightEl);
-    
-    
+
+
     // scrolling function
-    $(window).scroll(function() {
-        
-        if ( $(window).scrollTop() > 70 ){
+    $(window).scroll(function () {
+
+        if ($(window).scrollTop() > 70) {
             $('.header').addClass('fixed');
         } else {
             $('.header').removeClass('fixed');
         }
-       
+
     });
 
 
