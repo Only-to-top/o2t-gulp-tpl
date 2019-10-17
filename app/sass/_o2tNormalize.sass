@@ -24,7 +24,7 @@ button, a,
 * [role="button"],
 input, textarea
     &:focus
-      outline: none
+        outline: none
 
 a:not([href]):not([tabindex])
     color: $textAll
@@ -45,6 +45,8 @@ body
     position: relative
     overflow-x: hidden
     input, textarea
+        &::placeholder
+            color: #e57373
         &:valid,
         &:focus:valid,
         &:focus:required:valid,
@@ -57,24 +59,18 @@ body
             box-shadow: none
             border-color: #e57373
             color: $textForm
-            &::placeholder
-                color: #e57373
-
-::placeholder
-    color: $textPlaceholder
 
 input[type="number"]
-    -moz-appearance: textfield
+            -moz-appearance: textfield
 
 input[type="number"]:focus,
 input[type="number"]:hover
-    -moz-appearance: number-input
+            -moz-appearance: number-input
 
 ul, ol
     list-style-position: inside
     margin: 0
     padding: 0
-
 
 @media only screen and (max-width: 576px)
     .container

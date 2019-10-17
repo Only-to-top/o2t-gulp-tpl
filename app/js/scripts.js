@@ -66,7 +66,7 @@ jQuery(function ($) {
         const th = $(this);
         $.ajax({
             type: "POST",
-            url: "./mail.php",
+            url: "/mail.php",
             data: th.serialize()
         }).done(function () {
             $('.fancybox-close-small').click(); // close fancy popup
