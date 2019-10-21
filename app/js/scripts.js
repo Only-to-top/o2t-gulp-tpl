@@ -1,36 +1,36 @@
 `use strict`
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
 
     const ajaxSend = (formData, titleForm, textForm) => {
         fetch('/mail.php', {
             method: 'POST',
             body: formData
-        }).then(function(response){
+        }).then(function (response) {
             $('.fancybox-close-small').click(); // close fancy popup
             swal({ title: titleForm, text: textForm, type: 'success' });
-        }).catch(function(error){
+        }).catch(function (error) {
             console.error(error);
         })
     };
-    
-    document.querySelector('.subscribe-form').addEventListener('submit', function(e){
+
+    document.querySelector('.subscribe-form').addEventListener('submit', function (e) {
         e.preventDefault();
         const formData = new FormData(this);
         ajaxSend(formData, 'Спасибо!', 'Вы успешно подписались на нашу рассылку');
         this.reset(); // очищаем поля формы
     });
-    
-    document.querySelector('#contacts-form').addEventListener('submit', function(e){
+
+    document.querySelector('#contacts-form').addEventListener('submit', function (e) {
         e.preventDefault();
         const formData = new FormData(this);
         ajaxSend(formData, 'Спасибо!', 'Менеджер свяжется с Вами в ближайшее время');
         this.reset(); // очищаем поля формы
     });
-    
-    document.querySelector('#popupForm').addEventListener('submit', function(e){
+
+    document.querySelector('#popupForm').addEventListener('submit', function (e) {
         e.preventDefault();
         const formData = new FormData(this);
         ajaxSend(formData, 'Спасибо!', 'Менеджер свяжется с Вами в ближайшее время');

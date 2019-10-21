@@ -96,6 +96,26 @@ body {
   overflow-x: hidden;
 }
 
+body input::-webkit-input-placeholder, body textarea::-webkit-input-placeholder {
+  color: #e57373;
+}
+
+body input::-moz-placeholder, body textarea::-moz-placeholder {
+  color: #e57373;
+}
+
+body input:-ms-input-placeholder, body textarea:-ms-input-placeholder {
+  color: #e57373;
+}
+
+body input::-ms-input-placeholder, body textarea::-ms-input-placeholder {
+  color: #e57373;
+}
+
+body input::placeholder, body textarea::placeholder {
+  color: #e57373;
+}
+
 body input:valid, body input:focus:valid, body input:focus:required:valid, body input:invalid, body textarea:valid, body textarea:focus:valid, body textarea:focus:required:valid, body textarea:invalid {
   border-color: #222;
   color: #222;
@@ -106,46 +126,6 @@ body input:focus:invalid, body input:focus:required:invalid, body textarea:focus
   box-shadow: none;
   border-color: #e57373;
   color: #222;
-}
-
-body input:focus:invalid::-webkit-input-placeholder, body input:focus:required:invalid::-webkit-input-placeholder, body textarea:focus:invalid::-webkit-input-placeholder, body textarea:focus:required:invalid::-webkit-input-placeholder {
-  color: #e57373;
-}
-
-body input:focus:invalid::-moz-placeholder, body input:focus:required:invalid::-moz-placeholder, body textarea:focus:invalid::-moz-placeholder, body textarea:focus:required:invalid::-moz-placeholder {
-  color: #e57373;
-}
-
-body input:focus:invalid:-ms-input-placeholder, body input:focus:required:invalid:-ms-input-placeholder, body textarea:focus:invalid:-ms-input-placeholder, body textarea:focus:required:invalid:-ms-input-placeholder {
-  color: #e57373;
-}
-
-body input:focus:invalid::-ms-input-placeholder, body input:focus:required:invalid::-ms-input-placeholder, body textarea:focus:invalid::-ms-input-placeholder, body textarea:focus:required:invalid::-ms-input-placeholder {
-  color: #e57373;
-}
-
-body input:focus:invalid::placeholder, body input:focus:required:invalid::placeholder, body textarea:focus:invalid::placeholder, body textarea:focus:required:invalid::placeholder {
-  color: #e57373;
-}
-
-::-webkit-input-placeholder {
-  color: #666;
-}
-
-::-moz-placeholder {
-  color: #666;
-}
-
-:-ms-input-placeholder {
-  color: #666;
-}
-
-::-ms-input-placeholder {
-  color: #666;
-}
-
-::placeholder {
-  color: #666;
 }
 
 input[type="number"] {
