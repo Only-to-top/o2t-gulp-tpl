@@ -181,13 +181,23 @@ jQuery(function ($) {
     $("itemName").height(maxHeightEl);
 
 
+
     // scrolling function
     $(window).scroll(function () {
 
-        if ($(window).scrollTop() > 70) {
-            $('.header').addClass('fixed');
+        const menuHeight = $('.contacts-line').outerHeight();
+        const menu = $('.menu-header');
+
+        window.addEventListener("orientationchange", function () {
+            menu = $('.menu-header').outerHeight();
+        }, false);
+
+        if ($(window).scrollTop() > menuHeight) {
+            menu.parent().height(menu.outerHeight());
+            menu.addClass('fixed');
         } else {
-            $('.header').removeClass('fixed');
+            menu.removeClass('fixed');
+            menu.parent().height('auto');
         }
 
     });
