@@ -76,10 +76,6 @@ input:focus, textarea:focus {
   outline: none;
 }
 
-a:not([href]):not([tabindex]) {
-  color: #000;
-}
-
 button {
   border: none;
 }
@@ -94,38 +90,6 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-}
-
-body input::-webkit-input-placeholder, body textarea::-webkit-input-placeholder {
-  color: #e57373;
-}
-
-body input::-moz-placeholder, body textarea::-moz-placeholder {
-  color: #e57373;
-}
-
-body input:-ms-input-placeholder, body textarea:-ms-input-placeholder {
-  color: #e57373;
-}
-
-body input::-ms-input-placeholder, body textarea::-ms-input-placeholder {
-  color: #e57373;
-}
-
-body input::placeholder, body textarea::placeholder {
-  color: #e57373;
-}
-
-body input:valid, body input:focus:valid, body input:focus:required:valid, body input:invalid, body textarea:valid, body textarea:focus:valid, body textarea:focus:required:valid, body textarea:invalid {
-  border-color: #222;
-  color: #222;
-  box-shadow: none;
-}
-
-body input:focus:invalid, body input:focus:required:invalid, body textarea:focus:invalid, body textarea:focus:required:invalid {
-  box-shadow: none;
-  border-color: #e57373;
-  color: #222;
 }
 
 input[type="number"] {
@@ -199,6 +163,43 @@ a {
 a:hover {
   text-decoration: none;
   color: #FFD600;
+}
+
+.form input::-webkit-input-placeholder, .form textarea::-webkit-input-placeholder {
+  color: #e57373;
+  opacity: 1;
+}
+
+.form input::-moz-placeholder, .form textarea::-moz-placeholder {
+  color: #e57373;
+  opacity: 1;
+}
+
+.form input:-ms-input-placeholder, .form textarea:-ms-input-placeholder {
+  color: #e57373;
+  opacity: 1;
+}
+
+.form input::-ms-input-placeholder, .form textarea::-ms-input-placeholder {
+  color: #e57373;
+  opacity: 1;
+}
+
+.form input::placeholder, .form textarea::placeholder {
+  color: #e57373;
+  opacity: 1;
+}
+
+.form input:valid, .form input:focus:valid, .form input:focus:required:valid, .form input:invalid, .form textarea:valid, .form textarea:focus:valid, .form textarea:focus:required:valid, .form textarea:invalid {
+  border-color: #222;
+  color: #222;
+  box-shadow: none;
+}
+
+.form input:focus:invalid, .form input:focus:required:invalid, .form textarea:focus:invalid, .form textarea:focus:required:invalid {
+  box-shadow: none;
+  border-color: #e57373;
+  color: #222;
 }
 
 .form {

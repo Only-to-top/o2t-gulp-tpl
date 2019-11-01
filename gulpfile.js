@@ -18,8 +18,8 @@ gulp.task('clean', async function () {
 
 gulp.task('css', function () {
     return gulp.src([
-        'app/libs/bootstrap-4.3.1/bootstrap-reboot.min.css',
-        'app/libs/bootstrap-4.3.1/bootstrap-grid.min.css',
+        'app/libs/bootstrap-4.3.1/bootstrap-reboot.css',
+        // 'app/libs/bootstrap-4.3.1/bootstrap-grid.min.css',
         'app/libs/font-awesome-pro-all.min.css',
         'app/libs/sweetalert2/sweetalert2.min.css',
         'app/libs/swiper/swiper.min.css',
