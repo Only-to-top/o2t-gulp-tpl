@@ -1,8 +1,7 @@
 `use strict`
 
 
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener('DOMContentLoaded', () => {
 
     const ajaxSend = (formData, titleForm, textForm) => {
         fetch('/mail.php', {
@@ -14,29 +13,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }).catch(function (error) {
             console.error(error);
         })
-    };
+    }
 
-    document.querySelector('.subscribe-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        ajaxSend(formData, 'Спасибо!', 'Вы успешно подписались на нашу рассылку');
-        this.reset(); // очищаем поля формы
-    });
-
-    document.querySelector('#contacts-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        ajaxSend(formData, 'Спасибо!', 'Менеджер свяжется с Вами в ближайшее время');
-        this.reset(); // очищаем поля формы
-    });
-
-    document.querySelector('#popupForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        ajaxSend(formData, 'Спасибо!', 'Менеджер свяжется с Вами в ближайшее время');
-        this.reset(); // очищаем поля формы
-    });
-
+    if (document.querySelector(".form")) {
+        document.querySelector('.form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            ajaxSend(formData, 'Спасибо!', 'Вы успешно подписались на нашу рассылку');
+            this.reset(); // очищаем поля формы
+        });
+    }
 
 });
 
@@ -130,30 +116,32 @@ jQuery(function ($) {
 
 
     // swiper slider
-    new Swiper('.header-swiper-container', {
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', },
-        // pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true, },
-        autoplay: { delay: 6500, disableOnInteraction: false, },
-        spaceBetween: 20, // расст-е м-у слайдами
-        grabCursor: true, // рука
-        loop: true,
-        slidesPerView: 3, // кол-во слайдов
-        breakpoints: {
-            1200: { // < 1200
-                slidesPerView: 2,
-            },
-            992: { // < 992
-                slidesPerView: 2,
-            },
-            768: { // < 768
-                slidesPerView: 1,
-            },
-            576: { // < 576
-                slidesPerView: 1.5,
-                spaceBetween: 15,
-            },
-        }
-    });
+    if (document.querySelector(".header-swiper-container")) {
+        new Swiper('.header-swiper-container', {
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', },
+            // pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true, },
+            autoplay: { delay: 6500, disableOnInteraction: false, },
+            spaceBetween: 20, // расст-е м-у слайдами
+            grabCursor: true, // рука
+            loop: true,
+            slidesPerView: 3, // кол-во слайдов
+            breakpoints: {
+                1200: { // < 1200
+                    slidesPerView: 2,
+                },
+                992: { // < 992
+                    slidesPerView: 2,
+                },
+                768: { // < 768
+                    slidesPerView: 1,
+                },
+                576: { // < 576
+                    slidesPerView: 1.5,
+                    spaceBetween: 15,
+                },
+            }
+        });
+    };
     // stop autoplay swiper on hover
     $(".header-swiper-container").hover(function () {
         (this).swiper.autoplay.stop();
