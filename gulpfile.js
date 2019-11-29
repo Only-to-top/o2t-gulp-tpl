@@ -11,12 +11,12 @@ let gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps');
 
 
-gulp.task('clean', async function () {
+gulp.task('clean', async () => {
     del.sync('dist')
 })
 
 
-gulp.task('css', function () {
+gulp.task('css', () => {
     return gulp.src([
         'app/libs/bootstrap-4.3.1/bootstrap-reboot.css',
         // 'app/libs/bootstrap-4.3.1/bootstrap-grid.min.css',
@@ -32,7 +32,7 @@ gulp.task('css', function () {
 });
 
 
-gulp.task('sass', function () {
+gulp.task('sass', () => {
     return gulp.src('app/sass/**/*.sass')
         .pipe(sourcemaps.init())
         .pipe(sass({ outputStyle: 'expanded' })) // compressed
@@ -43,19 +43,19 @@ gulp.task('sass', function () {
 });
 
 
-gulp.task('html', function () {
+gulp.task('html', () => {
     return gulp.src('app/*.html')
         .pipe(browserSync.reload({ stream: true }))
 });
 
 
-gulp.task('script', function () {
+gulp.task('script', () => {
     return gulp.src('app/js/*.js')
         .pipe(browserSync.reload({ stream: true }))
 });
 
 
-gulp.task('js', function () {
+gulp.task('js', () => {
     return gulp.src([
         'app/libs/swiper/swiper.min.js',
         'app/libs/sweetalert2/sweetalert2.min.js',
@@ -69,7 +69,7 @@ gulp.task('js', function () {
 });
 
 
-gulp.task('browser-sync', function () {
+gulp.task('browser-sync', () => {
     browserSync.init({
         server: {
             baseDir: "app/"
@@ -79,7 +79,7 @@ gulp.task('browser-sync', function () {
 });
 
 
-gulp.task('export', function () {
+gulp.task('export', () => {
     let buildHtml = gulp.src('app/**/*.html')
         .pipe(gulp.dest('dist/'));
 
@@ -100,7 +100,7 @@ gulp.task('export', function () {
 });
 
 
-gulp.task('watch', function () {
+gulp.task('watch', () => {
     gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'));
     gulp.watch('app/*.html', gulp.parallel('html'))
     gulp.watch('app/js/*.js', gulp.parallel('script'))

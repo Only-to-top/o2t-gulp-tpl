@@ -124,7 +124,8 @@ jQuery(function ($) {
             spaceBetween: 20, // расст-е м-у слайдами
             grabCursor: true, // рука
             loop: true,
-            slidesPerView: 3, // кол-во слайдов
+            slidesPerView: 'auto', // кол-во слайдов
+            centeredSlides: true,
             breakpoints: {
                 1200: { // < 1200
                     slidesPerView: 2,
