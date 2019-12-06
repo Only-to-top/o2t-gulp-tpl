@@ -3,12 +3,12 @@
 let gulp = require('gulp'),
     sass = require('gulp-sass'),
     browserSync = require('browser-sync'),
-    uglify = require('gulp-uglifyes'),
-    concat = require('gulp-concat'),
+    concat = require('gulp-concat'), // объединение файлов
     rename = require('gulp-rename'),
     del = require('del'),
     autoprefixer = require('gulp-autoprefixer'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    terser = require('gulp-terser'); // для сжатия JS + es2015
 
 
 gulp.task('clean', async () => {
@@ -63,7 +63,7 @@ gulp.task('js', () => {
         'app/libs/jquery.mask.min.js',
     ])
         .pipe(concat('libs.min.js'))
-        .pipe(uglify())
+        .pipe(terser())
         .pipe(gulp.dest('app/js'))
         .pipe(browserSync.reload({ stream: true }))
 });
