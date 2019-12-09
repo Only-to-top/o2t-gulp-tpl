@@ -33,7 +33,7 @@ button
 body
     font-size: 16px
     font-family: $defaultFont
-    color: $textAll
+    color: $text
     line-height: 1.6
 
     background-color: #ccc
@@ -92,13 +92,7 @@ b, strong
 
 .btn
     cursor: pointer
-    border-radius: $bradBtn
     padding: 12px 35px
-    margin-bottom: 20px
-
-    background-color: $accent
-    color: $textAll
-    font-size: 18px
 
 a
     transition: .25s all
@@ -115,11 +109,11 @@ a
         &:focus:valid,
         &:focus:required:valid,
         &:invalid
-            border-color: $textForm
-            color: $textForm
+            border-color: $text
+            color: $text
             box-shadow: none
         &:focus:invalid,
         &:focus:required:invalid
             box-shadow: none
             border-color: #e57373
-            color: $textForm
+            color: $text
