@@ -5,7 +5,6 @@
 <ul>
     <li>jQuery</li>
     <li>bootstrap-reboot</li>
-    <li>bootstrap-grid</li>
     <li>Swiper</li>
     <li>fancybox</li>
     <li>jquery.mask</li>
