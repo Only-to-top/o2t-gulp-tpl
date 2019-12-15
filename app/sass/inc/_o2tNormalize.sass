@@ -4,12 +4,9 @@
     background-color: $accent
     color: #fff
 
-select:focus,
-select:hover,
-option:hover,
-option:focus,
-.form-control:focus
-    box-shadow: none!important
+select:focus, select:hover,
+option:hover, option:focus
+    box-shadow: none
     border: none
     outline: none
     border: transparent
@@ -32,11 +29,11 @@ button
 
 body
     font-size: 16px
-    font-family: $defaultFont
+    font-family: $ff
+    font-weight: 400
+    line-height: 1.4
     color: $text
-    line-height: 1.6
-
-    background-color: #ccc
+    background-color: #fff
 
     min-width: 320px
     min-height: 100vh
@@ -49,6 +46,9 @@ input[type="number"]
 input[type="number"]:focus,
 input[type="number"]:hover
             -moz-appearance: number-input
+
+textarea
+    resize: vertical
 
 ul, ol
     list-style-position: inside
@@ -77,22 +77,15 @@ ul, ol
 b, strong
     font-weight: 700
 
-.container-fluid
-    max-width: 1660px
-    padding-left: 20px
-    padding-right: 20px
-
 .container
     max-width: 1200px
     padding-left: 20px
     padding-right: 20px
+    margin: auto
 
 .hidden
     display: none
 
-.btn
-    cursor: pointer
-    padding: 12px 35px
 
 a
     transition: .25s all
@@ -100,20 +93,6 @@ a
         text-decoration: none
         color: $accent
 
-.form
-    input, textarea
-        &::placeholder
-            color: #e57373
-            opacity: 1
-        &:valid,
-        &:focus:valid,
-        &:focus:required:valid,
-        &:invalid
-            border-color: $text
-            color: $text
-            box-shadow: none
-        &:focus:invalid,
-        &:focus:required:invalid
-            box-shadow: none
-            border-color: #e57373
-            color: $text
+.btn
+    cursor: pointer
+    padding: 12px 35px

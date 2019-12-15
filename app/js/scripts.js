@@ -98,12 +98,6 @@ jQuery(function ($) {
     });
 
 
-    // anchor link => title popup
-    $('a[data-src="#popupForm"]').click(function () {
-        $("#popupForm .title").html($(this).text()); //текст ссылки вставляем в название модального окна
-    });
-
-
     // hide block on click outside
     if ($(window).width() < 768) {
         $(document).mouseup(function (e) {
@@ -159,7 +153,9 @@ jQuery(function ($) {
     });
 
 
-    $('input[type="tel"]').mask('+7 (000) 000-00-00', { placeholder: "+7 (___) ___-__-__" });
+    $('input[type="tel"]').mask('+7 (000) 000-00-00',
+        // { placeholder: "+7 (___) ___-__-__" }
+    );
 
 
     // equal heights

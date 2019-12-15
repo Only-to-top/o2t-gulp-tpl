@@ -3,12 +3,13 @@
 let gulp = require('gulp'),
     sass = require('gulp-sass'),
     browserSync = require('browser-sync'),
-    concat = require('gulp-concat'), // объединение файлов
+    concat = require('gulp-concat'),            // объединение файлов
     rename = require('gulp-rename'),
     del = require('del'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
-    terser = require('gulp-terser'); // для сжатия JS + es2015
+    terser = require('gulp-terser'),            // для сжатия JS + es2015
+    notify = require('gulp-notify');            // уведомления
 
 
 gulp.task('clean', async () => {
@@ -18,7 +19,7 @@ gulp.task('clean', async () => {
 
 gulp.task('css', () => {
     return gulp.src([
-        'app/libs/bootstrap-4.3.1/bootstrap-reboot.css',
+        'app/libs/bootstrap-reboot-4.4.1.css',
         'app/libs/font-awesome-pro-all.min.css',
         'app/libs/sweetalert2/sweetalert2.min.css',
         'app/libs/swiper/swiper.min.css',
@@ -34,7 +35,9 @@ gulp.task('css', () => {
 gulp.task('sass', () => {
     return gulp.src('app/sass/**/*.sass')
         .pipe(sourcemaps.init())
-        .pipe(sass({ outputStyle: 'expanded' })) // compressed
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }).on('eror', notify.onError)) // плагин уведомления об ошибках
         .pipe(autoprefixer({ grid: true, overrideBrowserlist: ['last 9 versions'] }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('app/css'))
@@ -44,6 +47,11 @@ gulp.task('sass', () => {
 
 gulp.task('html', () => {
     return gulp.src('app/*.html')
+        .pipe(browserSync.reload({ stream: true }))
+});
+
+gulp.task('php', () => {
+    return gulp.src('app/*.php')
         .pipe(browserSync.reload({ stream: true }))
 });
 
@@ -100,12 +108,12 @@ gulp.task('export', () => {
 
 
 gulp.task('watch', () => {
-    gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'));
+    gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'))
     gulp.watch('app/*.html', gulp.parallel('html'))
+    gulp.watch('app/*.php', gulp.parallel('php'))
     gulp.watch('app/js/*.js', gulp.parallel('script'))
 });
 
 
 gulp.task('build', gulp.series('clean', 'export'))
-
 gulp.task('default', gulp.parallel('css', 'sass', 'js', 'browser-sync', 'watch'));
