@@ -19,7 +19,7 @@ gulp.task('clean', async () => {
 
 gulp.task('css', () => {
     return gulp.src([
-        'app/libs/bootstrap-reboot-4.4.1.css',
+        'app/libs/bootstrap-reboot-4.4.1.min.css',
         'app/libs/font-awesome-pro-all.min.css',
         'app/libs/sweetalert2/sweetalert2.min.css',
         'app/libs/swiper/swiper.min.css',
