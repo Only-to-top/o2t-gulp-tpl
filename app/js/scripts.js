@@ -16,11 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (document.querySelector(".form")) {
-        document.querySelector('.form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            ajaxSend(formData, 'Спасибо!', 'Вы успешно подписались на нашу рассылку');
-            this.reset(); // очищаем поля формы
+        document.querySelectorAll('.form').forEach(el => {
+            el.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                ajaxSend(formData, 'Спасибо!', 'Данные отправлены.');
+                this.reset(); // очищаем поля формы
+            });
         });
     }
 
