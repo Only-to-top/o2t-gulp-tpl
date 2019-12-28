@@ -22,7 +22,7 @@ gulp.task('css', () => {
         'app/libs/bootstrap-reboot-4.4.1.min.css',
         'app/libs/font-awesome-pro-all.min.css',
         'app/libs/sweetalert2/sweetalert2.min.css',
-        'app/libs/swiper/swiper.min.css',
+        'app/libs/swiper-5.2.1/swiper.min.css',
         'app/libs/fancybox/jquery.fancybox.min.css',
     ])
         .pipe(concat('libs.css'))
@@ -64,7 +64,7 @@ gulp.task('script', () => {
 
 gulp.task('js', () => {
     return gulp.src([
-        'app/libs/swiper/swiper.min.js',
+        'app/libs/swiper-5.2.1/swiper.min.js',
         'app/libs/sweetalert2/sweetalert2.min.js',
         'app/libs/fancybox/jquery.fancybox.min.js',
         'app/libs/jquery.mask.min.js',

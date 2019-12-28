@@ -134,16 +134,13 @@ a:hover {
   padding: 12px 35px;
 }
 
-.header-swiper-container {
+.swiper-container {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -151,8 +148,12 @@ a:hover {
   -webkit-box-align: center;
           align-items: center;
   min-height: 300px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: #FFD600;
+  font-size: 27px;
 }
 
 .fancybox-bg {

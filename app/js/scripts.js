@@ -110,35 +110,41 @@ jQuery(function ($) {
 
 
     // swiper slider
-    if (document.querySelector(".header-swiper-container")) {
-        new Swiper('.header-swiper-container', {
+    if (document.querySelector(".swiper-container--header")) {
+        new Swiper('.swiper-container--header', {
             navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', },
             // pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true, },
             autoplay: { delay: 6500, disableOnInteraction: false, },
             spaceBetween: 20, // расст-е м-у слайдами
             grabCursor: true, // рука
             loop: true,
-            slidesPerView: 'auto', // кол-во слайдов
-            centeredSlides: true,
+            // centeredSlides: true,
             breakpoints: {
-                1200: { // < 1200
-                    slidesPerView: 2,
-                },
-                992: { // < 992
-                    slidesPerView: 2,
-                },
-                768: { // < 768
+                0: {                    // >= 0
                     slidesPerView: 1,
+                    spaceBetween: 20
                 },
-                576: { // < 576
-                    slidesPerView: 1.5,
-                    spaceBetween: 15,
+                480: {                  // >= 480px
+                    slidesPerView: 2,
+                    spaceBetween: 30
                 },
+                768: {                  // >= 768px
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                },
+                992: {                  // >= 992px
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                },
+                1200: {                 // >= 1200px
+                    slidesPerView: 4,
+                    spaceBetween: 40
+                }
             }
         });
     };
     // stop autoplay swiper on hover
-    $(".header-swiper-container").hover(function () {
+    $(".swiper-container--header").hover(function () {
         (this).swiper.autoplay.stop();
     }, function () {
         (this).swiper.autoplay.start();
