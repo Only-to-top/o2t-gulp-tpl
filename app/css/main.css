@@ -141,12 +141,6 @@ a:hover {
 }
 
 .swiper-slide {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
   min-height: 300px;
 }
 
