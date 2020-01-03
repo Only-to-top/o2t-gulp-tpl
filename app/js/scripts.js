@@ -1,35 +1,6 @@
 `use strict`
 
 
-document.addEventListener('DOMContentLoaded', () => {
-
-    const ajaxSend = (formData, titleForm, textForm) => {
-        fetch('/mail.php', {
-            method: 'POST',
-            body: formData
-        }).then(function (response) {
-            $('.fancybox-close-small').click(); // close fancy popup
-            swal({ title: titleForm, text: textForm, type: 'success' });
-        }).catch(function (error) {
-            console.error(error);
-        })
-    }
-
-    if (document.querySelector(".form")) {
-        document.querySelectorAll('.form').forEach(el => {
-            el.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const formData = new FormData(this);
-                ajaxSend(formData, 'Спасибо!', 'Данные отправлены.');
-                this.reset(); // очищаем поля формы
-            });
-        });
-    }
-
-});
-
-
-
 jQuery(function ($) {
 
 
@@ -111,9 +82,9 @@ jQuery(function ($) {
     };
 
 
-    // swiper slider
+    // Swiper slider
     if (document.querySelector(".swiper-container--header")) {
-        new Swiper('.swiper-container--header', {
+        const swiperHeader = new Swiper('.swiper-container--header', {
             navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', },
             // pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true, },
             autoplay: { delay: 6500, disableOnInteraction: false, },
@@ -144,13 +115,15 @@ jQuery(function ($) {
                 }
             }
         });
-    };
-    // stop autoplay swiper on hover
-    $(".swiper-container--header").hover(function () {
-        (this).swiper.autoplay.stop();
-    }, function () {
-        (this).swiper.autoplay.start();
-    });
+
+        // stop autoplay swiper on hover
+        $(".swiper-container--header").hover(function () {
+            swiperHeader.autoplay.stop();
+        }, function () {
+            swiperHeader.autoplay.start();
+        });
+
+    };// /swiper slider
 
 
     // scroll to top
@@ -195,5 +168,33 @@ jQuery(function ($) {
 
     });
 
+
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const ajaxSend = (formData, titleForm, textForm) => {
+        fetch('/mail.php', {
+            method: 'POST',
+            body: formData
+        }).then(function (response) {
+            $('.fancybox-close-small').click(); // close fancy popup
+            swal({ title: titleForm, text: textForm, type: 'success' });
+        }).catch(function (error) {
+            console.error(error);
+        })
+    }
+
+    if (document.querySelector(".form")) {
+        document.querySelectorAll('.form').forEach(el => {
+            el.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                ajaxSend(formData, 'Спасибо!', 'Данные отправлены.');
+                this.reset(); // очищаем поля формы
+            });
+        });
+    }
 
 });
