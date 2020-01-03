@@ -140,13 +140,13 @@ a:hover {
   position: relative;
 }
 
-.swiper-slide {
-  min-height: 300px;
+.swiper-button-next,
+.swiper-button-prev {
+  color: #FFD600;
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  color: #FFD600;
   font-size: 27px;
 }
 
