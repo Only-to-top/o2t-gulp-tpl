@@ -11,21 +11,23 @@ option:hover, option:focus
     outline: none
     border: transparent
 
-select[disabled]
+button
+    border: none
+
+select[disabled],
+button[disabled]
     cursor: not-allowed
 
 label, a
     user-select: none
 
-button, a,
+button,
+a,
 * [role="button"],
-input, textarea
+input,
+textarea
     &:focus
         outline: none
-
-
-button
-    border: none
 
 body
     font-size: 16px
