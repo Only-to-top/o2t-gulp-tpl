@@ -140,11 +140,16 @@ jQuery(function ($) {
 
 
     // equal heights
-    const maxHeightEl = 0;
-    $("itemName").each(function () {
-        if ($(this).height() > maxHeightEl) { maxHeightEl = $(this).height(); }
-    });
-    $("itemName").height(maxHeightEl);
+    let maxHeightEl = 0;
+    const itemNameEQH = $('el');
+    const equalHeightFunction = () => {
+        itemNameEQH.each(function () {
+            if ($(this).height() > maxHeightEl) { maxHeightEl = $(this).height(); }
+        });
+        itemNameEQH.height(maxHeightEl);
+    }
+    equalHeightFunction();
+    $(window).resize(equalHeightFunction());
 
 
 
