@@ -18,19 +18,23 @@ jQuery(function ($) {
     $('.hamburger').on('click', menuOpen);
 
     // close menu
-    if ($(window).width() < 768) {
-        $(document).mouseup(function (e) { //Скрыть меню при клике вне его
-            const hamburger = $('.hamburger');
+    const closeMenuFunc = () => {
+        if ($(window).width() < 992) {
+            $(document).mouseup(function (e) { //Скрыть меню при клике вне его
+                const hamburger = $('.hamburger');
 
-            if ((menu.has(e.target).length === 0) && (hamburger.has(e.target).length === 0)) {
-                menu.stop().slideUp();
+                if ((menu.has(e.target).length === 0) && (hamburger.has(e.target).length === 0)) {
+                    menu.stop().slideUp();
 
-                if (hamburger.hasClass('is-active')) {
-                    hamburger.removeClass('is-active');
+                    if (hamburger.hasClass('is-active')) {
+                        hamburger.removeClass('is-active');
+                    };
                 };
-            };
-        });
-    };
+            });
+        };
+    }
+    closeMenuFunc();
+    $(window).resize(closeMenuFunc)
 
 
     // anchor link => title popup
@@ -74,7 +78,7 @@ jQuery(function ($) {
     // hide block on click outside
     if ($(window).width() < 768) {
         $(document).mouseup(function (e) {
-            var container = $(".search--show");
+            let container = $(".search--show");
             if (container.has(e.target).length === 0) {
                 container.fadeOut();
             };
@@ -129,7 +133,7 @@ jQuery(function ($) {
     // scroll to top
     $("#element, #element2").on("click", "a", function (event) {
         event.preventDefault();
-        var id = $(this).attr('href'), top = $(id).offset().top;
+        let id = $(this).attr('href'), top = $(id).offset().top;
         $('body, html').animate({ scrollTop: top }, 1500);
     });
 
