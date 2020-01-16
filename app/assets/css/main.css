@@ -24,7 +24,12 @@ option:hover, option:focus {
   border: transparent;
 }
 
-select[disabled] {
+button {
+  border: none;
+}
+
+select[disabled],
+button[disabled] {
   cursor: not-allowed;
 }
 
@@ -35,14 +40,12 @@ label, a {
           user-select: none;
 }
 
-button:focus, a:focus,
+button:focus,
+a:focus,
 * [role="button"]:focus,
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
-}
-
-button {
-  border: none;
 }
 
 body {
@@ -89,6 +92,7 @@ ul, ol {
 .img-resp {
   display: block;
   max-width: 100%;
+  width: 100%;
   height: auto;
 }
 

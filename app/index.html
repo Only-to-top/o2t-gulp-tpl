@@ -8,14 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel="icon" href="./img/favicon.ico">
+    <link rel="icon" href="./assets/img/favicon.ico">
 
     <meta name="theme-color" content="#812b90">
     <meta name="msapplication-navbutton-color" content="#812b90">
     <meta name="apple-mobile-web-app-status-bar-style" content="#812b90">
 
-    <link rel="stylesheet" href="./css/libs.min.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./assets/css/libs.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
 
 </head>
 
@@ -69,7 +69,8 @@
         <input type="hidden" name="project_name" value="SiteName">
         <input type="hidden" name="admin_email" value="rlytrue2@gmail.com">
         <!-- <input type="hidden" name="admin_email" value="<?php/* echo get_option('admin_email') */?>"> -->
-        <input type="hidden" name="form_subject" value="Форма со страницы <?php echo 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>">
+        <input type="hidden" name="form_subject"
+            value="Форма со страницы <?php echo 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>">
 
         <div class="container">
             <div class="form__title">Оставьте заявку и мы вам перезвоним</div>
@@ -99,8 +100,8 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./js/libs.min.js"></script>
-    <script src="./js/scripts.js"></script>
+    <script src="./assets/js/libs.min.js"></script>
+    <script src="./assets/js/scripts.js"></script>
 </body>
 
 </html>

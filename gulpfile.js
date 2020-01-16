@@ -19,28 +19,28 @@ gulp.task('clean', async () => {
 
 gulp.task('css', () => {
     return gulp.src([
-        'app/libs/bootstrap-reboot-4.4.1.min.css',
-        'app/libs/font-awesome-pro-all.min.css',
-        'app/libs/sweetalert2/sweetalert2.min.css',
-        'app/libs/swiper-5.2.1/swiper.min.css',
-        'app/libs/fancybox/jquery.fancybox.min.css',
+        'app/assets/libs/bootstrap-reboot-4.4.1.min.css',
+        'app/assets/libs/font-awesome-pro-all.min.css',
+        'app/assets/libs/sweetalert2/sweetalert2.min.css',
+        'app/assets/libs/swiper-5.2.1/swiper.min.css',
+        'app/assets/libs/fancybox/jquery.fancybox.min.css',
     ])
         .pipe(concat('libs.css'))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('app/css'))
+        .pipe(gulp.dest('app/assets/css'))
         .pipe(browserSync.reload({ stream: true }))
 });
 
 
 gulp.task('sass', () => {
-    return gulp.src('app/sass/**/*.sass')
+    return gulp.src('app/assets/sass/**/*.sass')
         .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'expanded'
         }).on('eror', notify.onError)) // плагин уведомления об ошибках
         .pipe(autoprefixer({ grid: true, overrideBrowserlist: ['last 9 versions'] }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('app/css'))
+        .pipe(gulp.dest('app/assets/css'))
         .pipe(browserSync.reload({ stream: true }))
 });
 
@@ -57,21 +57,21 @@ gulp.task('php', () => {
 
 
 gulp.task('script', () => {
-    return gulp.src('app/js/*.js')
+    return gulp.src('app/assets/js/*.js')
         .pipe(browserSync.reload({ stream: true }))
 });
 
 
 gulp.task('js', () => {
     return gulp.src([
-        'app/libs/swiper-5.2.1/swiper.min.js',
-        'app/libs/sweetalert2/sweetalert2.min.js',
-        'app/libs/fancybox/jquery.fancybox.min.js',
-        'app/libs/jquery.mask.min.js',
+        'app/assets/libs/swiper-5.2.1/swiper.min.js',
+        'app/assets/libs/sweetalert2/sweetalert2.min.js',
+        'app/assets/libs/fancybox/jquery.fancybox.min.js',
+        'app/assets/libs/jquery.mask.min.js',
     ])
         .pipe(concat('libs.min.js'))
         .pipe(terser())
-        .pipe(gulp.dest('app/js'))
+        .pipe(gulp.dest('app/assets/js'))
         .pipe(browserSync.reload({ stream: true }))
 });
 
@@ -108,10 +108,10 @@ gulp.task('export', () => {
 
 
 gulp.task('watch', () => {
-    gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'))
+    gulp.watch('app/assets/sass/**/*.sass', gulp.parallel('sass'))
     gulp.watch('app/*.html', gulp.parallel('html'))
     gulp.watch('app/*.php', gulp.parallel('php'))
-    gulp.watch('app/js/*.js', gulp.parallel('script'))
+    gulp.watch('app/assets/js/*.js', gulp.parallel('script'))
 });
 
 
