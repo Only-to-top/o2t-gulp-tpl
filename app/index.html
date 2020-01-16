@@ -54,9 +54,9 @@
             <div class="swiper-slide">Slide 3</div>
             <div class="swiper-slide">Slide 4</div>
         </div>
-        <div class="swiper-pagination"></div> <!-- If we need pagination -->
+
+        <div class="swiper-pagination"></div>
         <div class="swiper-buttons">
-            <!-- If we need navigation buttons -->
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>
@@ -66,38 +66,19 @@
 
 
     <form class="form hidden" id="popupForm">
+
+        <div class="form__title">Оставьте заявку и мы вам перезвоним</div>
+        <input type="text" name="Имя" placeholder="Имя">
+        <input type="tel" name="Телефон" placeholder="Телефон">
+        <input type="email" name="E-mail" placeholder="E-mail*" required>
+        <textarea name="Собщение" placeholder="Собщение"></textarea>
+        <button class="btn">Отправить</button>
+
         <input type="hidden" name="project_name" value="SiteName">
         <input type="hidden" name="admin_email" value="rlytrue2@gmail.com">
-        <!-- <input type="hidden" name="admin_email" value="<?php/* echo get_option('admin_email') */?>"> -->
-        <input type="hidden" name="form_subject"
-            value="Форма со страницы <?php echo 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>">
-
-        <div class="container">
-            <div class="form__title">Оставьте заявку и мы вам перезвоним</div>
-
-            <div class="row">
-
-                <div class="col-sm-12 col-md-6">
-                    <input type="text" name="Имя" placeholder="Имя">
-                    <input type="tel" name="Телефон" placeholder="Телефон">
-                    <input type="email" name="E-mail" placeholder="E-mail*" required>
-                </div>
-
-                <div class="col-sm-12 col-md-6">
-                    <textarea name="Собщение" placeholder="Собщение"></textarea>
-                </div>
-
-                <div class="col-12 tac">
-                    <button class="btn form__btn">Отправить</button>
-                    <small>Нажимая кнопку вы соглашаетесь <br>с обработкой своих <a href="#">персональных
-                            данных</a></small>
-                </div>
-
-            </div><!-- / row -->
-        </div>
-
+        <!-- <input type="hidden" name="admin_email" value="<?php /* echo get_option('admin_email') */ ?>"> -->
+        <!-- <input type="hidden" name="form_subject" value="Форма со страницы <?php /* echo 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; */ ?>"> -->
     </form>
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/libs.min.js"></script>
