@@ -3,12 +3,12 @@
 <b>Libs:</b>
 
 <ul>
-    <li>jQuery</li>
-    <li>bootstrap-reboot</li>
-    <li>Swiper</li>
-    <li>fancybox</li>
-    <li>jquery.mask</li>
-    <li>SweetAlert2</li>
+    <li>jQuery (js)</li>
+    <li>bootstrap-reboot (css)</li>
+    <li>Swiper (css, js)</li>
+    <li>fancybox (css, js)</li>
+    <li>jquery.mask (js)</li>
+    <li>SweetAlert2 (css, js)</li>
  </ul>
 
 <b>JavaScript:</b>
