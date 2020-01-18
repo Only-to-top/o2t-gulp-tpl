@@ -4,12 +4,15 @@
     background-color: $accent
     color: #fff
 
-select:focus, select:hover,
-option:hover, option:focus
+select:focus,
+select:hover,
+option:hover,
+option:focus
     box-shadow: none
     border: none
     outline: none
     border: transparent
+    opacity: 1
 
 button
     border: none
@@ -43,11 +46,11 @@ body
     overflow-x: hidden
 
 input[type="number"]
-            -moz-appearance: textfield
+    -moz-appearance: textfield
 
 input[type="number"]:focus,
 input[type="number"]:hover
-            -moz-appearance: number-input
+    -moz-appearance: number-input
 
 textarea
     resize: vertical
@@ -60,17 +63,9 @@ ul, ol
     margin: 0
     padding: 0
 
-@media only screen and (max-width: 576px)
-    .container
-        overflow: hidden
-    .header
-        .container
-            overflow: visible
-
 .img-resp
     display: block
     max-width: 100%
-    width: 100%
     height: auto
 
 .tal
@@ -88,6 +83,13 @@ b, strong
     padding-left: 20px
     padding-right: 20px
     margin: auto
+
+@media only screen and (max-width: 576px)
+    .container
+        overflow: hidden
+    .header
+        .container
+            overflow: visible
 
 .hidden
     display: none
