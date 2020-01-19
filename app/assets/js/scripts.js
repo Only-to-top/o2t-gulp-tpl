@@ -48,6 +48,10 @@ jQuery(function ($) {
         animationEffect: 'fade',
         animationDuration: 555,
         // smallBtn: false,
+        btnTpl: {
+            smallBtn:
+                `<button data-fancybox-close class="fancybox-button fancybox-close-small" title="{{CLOSE}}">×</button>`,
+        },
         lang: "ru",
         i18n: {
             ru: {
