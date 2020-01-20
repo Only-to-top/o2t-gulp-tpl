@@ -8,12 +8,12 @@
 // 800 Black (очень жирный) or Extra Bold (более ижрный) or Heavy (насыщенный жирный);
 // 900 Extra Black (сверхжирный) or Fat or Ultra Black (ультражирный)
 
-@mixin font($f-name, $f-style, $f-weight, $f-url)
+@mixin font($f_name, $f_style, $f_weight, $f_url, $f_format)
     @font-face
-        font-family: $f-name
+        font-family: $f_name
         font-display: swap
-        font-style: $f-style
-        font-weight: $f-weight
-        src: url($f-url) format('woff')
+        font-style: $f_style
+        font-weight: $f_weight
+        src: url($f_url) format($f_format)
 
-@include font('Roboto', normal, 400, '../fonts/RobotoRegular.woff')
+@include font('Roboto', normal, 400, '../fonts/RobotoRegular.woff', 'woff')

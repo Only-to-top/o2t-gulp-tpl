@@ -16,12 +16,34 @@
   color: #fff;
 }
 
-select:focus, select:hover,
-option:hover, option:focus {
+select:focus,
+select:hover,
+option:hover,
+option:focus {
   box-shadow: none;
   border: none;
   outline: none;
   border: transparent;
+}
+
+::-webkit-input-placeholder {
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  opacity: 1;
+}
+
+::placeholder {
+  opacity: 1;
 }
 
 button {
@@ -74,25 +96,19 @@ textarea {
   resize: vertical;
 }
 
+ul {
+  list-style-type: none;
+}
+
 ul, ol {
   list-style-position: inside;
   margin: 0;
   padding: 0;
 }
 
-@media only screen and (max-width: 576px) {
-  .container {
-    overflow: hidden;
-  }
-  .header .container {
-    overflow: visible;
-  }
-}
-
 .img-resp {
   display: block;
   max-width: 100%;
-  width: 100%;
   height: auto;
 }
 
@@ -117,6 +133,15 @@ b, strong {
   padding-left: 20px;
   padding-right: 20px;
   margin: auto;
+}
+
+@media only screen and (max-width: 576px) {
+  .container {
+    overflow: hidden;
+  }
+  .header .container {
+    overflow: visible;
+  }
 }
 
 .hidden {
@@ -182,6 +207,14 @@ body.compensate-for-scrollbar {
 
 .compensate-for-scrollbar {
   margin-right: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .fancybox-content {
+    max-width: calc(100% - 30px);
+    padding: 20px;
+    margin: 20px;
+  }
 }
 
 .hamburger {
