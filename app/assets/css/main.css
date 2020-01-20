@@ -189,6 +189,8 @@ a:hover {
 
 .fancybox-slide--html .fancybox-close-small {
   color: #222;
+  font-size: 30px;
+  padding: 0;
 }
 
 .fancybox-lock {
