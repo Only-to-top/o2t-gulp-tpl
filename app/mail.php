@@ -25,7 +25,12 @@ foreach ( $_POST as $key => $value ) {
 }
 
 
-$message = "<table style='width: 100%;'>$message</table>";
+$message = "<table style='width: 100%;'>
+    <tr style='text-align: center;'>
+        <td style='padding: 0 10px; width: 100%; border: #e9e9e9 1px solid;' colspan='2'><h2>$form_subject</h2></td>
+    </tr>
+    $message
+</table>";
 
 function adopt($text) {
 	return '=?UTF-8?B?'.Base64_encode($text).'?=';
