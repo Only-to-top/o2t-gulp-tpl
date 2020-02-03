@@ -5,16 +5,10 @@ let gulp = require('gulp'),
     browserSync = require('browser-sync'),
     concat = require('gulp-concat'),            // объединение файлов
     rename = require('gulp-rename'),
-    del = require('del'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     terser = require('gulp-terser'),            // для сжатия JS + es2015
     notify = require('gulp-notify');            // уведомления
-
-
-gulp.task('clean', async () => {
-    del.sync('dist')
-})
 
 
 gulp.task('css', () => {
@@ -46,19 +40,15 @@ gulp.task('sass', () => {
 
 
 gulp.task('html', () => {
-    return gulp.src('app/*.html')
-        .pipe(browserSync.reload({ stream: true }))
+    return gulp.src('app/*.html').pipe(browserSync.reload({ stream: true }))
 });
 
 gulp.task('php', () => {
-    return gulp.src('app/*.php')
-        .pipe(browserSync.reload({ stream: true }))
+    return gulp.src('app/*.php').pipe(browserSync.reload({ stream: true }))
 });
 
-
 gulp.task('script', () => {
-    return gulp.src('app/assets/js/*.js')
-        .pipe(browserSync.reload({ stream: true }))
+    return gulp.src('app/assets/js/*.js').pipe(browserSync.reload({ stream: true }))
 });
 
 
@@ -86,27 +76,6 @@ gulp.task('browser-sync', () => {
 });
 
 
-gulp.task('export', () => {
-    let buildHtml = gulp.src('app/**/*.html')
-        .pipe(gulp.dest('dist/'));
-
-    let buildPHP = gulp.src('app/**/*.php')
-        .pipe(gulp.dest('dist/'));
-
-    let BuildCss = gulp.src('app/css/**/*.css')
-        .pipe(gulp.dest('dist/css'));
-
-    let BuildJs = gulp.src('app/js/**/*.js')
-        .pipe(gulp.dest('dist/js'));
-
-    let BuildFonts = gulp.src('app/fonts/**/*.*')
-        .pipe(gulp.dest('dist/fonts'));
-
-    let BuildImg = gulp.src('app/img/**/*.*')
-        .pipe(gulp.dest('dist/img'));
-});
-
-
 gulp.task('watch', () => {
     gulp.watch('app/assets/sass/**/*.sass', gulp.parallel('sass'))
     gulp.watch('app/*.html', gulp.parallel('html'))
@@ -115,5 +84,10 @@ gulp.task('watch', () => {
 });
 
 
-gulp.task('build', gulp.series('clean', 'export'))
-gulp.task('default', gulp.parallel('css', 'sass', 'js', 'browser-sync', 'watch'));
+gulp.task('default', gulp.parallel(
+    'css',
+    'sass',
+    'js',
+    'browser-sync',
+    'watch'
+));
