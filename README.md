@@ -19,4 +19,5 @@
     <li>popup fancybox (+gallery)</li>
     <li>e-mail ajax send</li>
     <li>equal heights</li>
+    <li>tabs</li>
 </ul>

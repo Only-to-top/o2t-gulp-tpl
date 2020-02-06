@@ -32,9 +32,9 @@ jQuery(function ($) {
                 };
             });
         };
-    }
+    };
     closeMenuFunc();
-    $(window).resize(closeMenuFunc)
+    $(window).resize(closeMenuFunc);
 
 
     // anchor link => title popup
@@ -158,7 +158,18 @@ jQuery(function ($) {
     }
     equalHeightFunction();
     $(window).resize(equalHeightFunction());
+    
+    
+    // tabs
+    $('.tab').on('click', function () {
+        let dataTarget = $(this).attr('data-target');
 
+        $('.tab').removeClass('active');
+        $(this).addClass('active');
+
+        $('.tab-content').removeClass('active');
+        $('.tab-content--' + dataTarget).addClass('active');
+    });
 
 
     // scrolling function
