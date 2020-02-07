@@ -8,7 +8,8 @@ let gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     terser = require('gulp-terser'),            // для сжатия JS + es2015
-    notify = require('gulp-notify');            // уведомления
+    notify = require('gulp-notify'),            // уведомления
+    del = require('del');                       // удаление папок и файлов
 
 
 gulp.task('css', () => {
@@ -21,7 +22,7 @@ gulp.task('css', () => {
     ])
         .pipe(concat('libs.css'))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('app/assets/css'))
+        .pipe(gulp.dest('./app/assets/css/'))
         .pipe(browserSync.reload({ stream: true }))
 });
 
@@ -34,21 +35,27 @@ gulp.task('sass', () => {
         }).on('eror', notify.onError)) // плагин уведомления об ошибках
         .pipe(autoprefixer({ grid: true, overrideBrowserlist: ['last 9 versions'] }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('app/assets/css'))
+        .pipe(gulp.dest('./app/assets/css/'))
         .pipe(browserSync.reload({ stream: true }))
 });
 
 
-gulp.task('html', () => {
-    return gulp.src('app/*.html').pipe(browserSync.reload({ stream: true }))
+gulp.task('code', () => {
+    return gulp.src(['app/*.html', 'app/*.php'])
+        .pipe(browserSync.reload({ stream: true }))
 });
 
-gulp.task('php', () => {
-    return gulp.src('app/*.php').pipe(browserSync.reload({ stream: true }))
+gulp.task('files', () => {
+    return gulp.src([
+        './app/robots.txt',
+        './app/.htaccess'
+    ])
+        .pipe(gulp.dest('./dist/'))
 });
 
 gulp.task('script', () => {
-    return gulp.src('app/assets/js/*.js').pipe(browserSync.reload({ stream: true }))
+    return gulp.src('app/assets/js/*.js')
+        .pipe(browserSync.reload({ stream: true }))
 });
 
 
@@ -61,7 +68,7 @@ gulp.task('js', () => {
     ])
         .pipe(concat('libs.min.js'))
         .pipe(terser())
-        .pipe(gulp.dest('app/assets/js'))
+        .pipe(gulp.dest('./app/assets/js/'))
         .pipe(browserSync.reload({ stream: true }))
 });
 
@@ -69,21 +76,32 @@ gulp.task('js', () => {
 gulp.task('browser-sync', () => {
     browserSync.init({
         server: {
-            baseDir: "app/"
+            baseDir: "./app/"
         },
         notify: false
     });
 });
 
 
-gulp.task('watch', () => {
-    gulp.watch('app/assets/sass/**/*.sass', gulp.parallel('sass'))
-    gulp.watch('app/*.html', gulp.parallel('html'))
-    gulp.watch('app/*.php', gulp.parallel('php'))
-    gulp.watch('app/assets/js/*.js', gulp.parallel('script'))
+
+gulp.task('prebuild', async () => { // перенос контента в продакшен
+    const buildCss = gulp.src(['./app/assets/css/main.css', './app/assets/css/libs.min.css']).pipe(gulp.dest('./dist/assets/css/'))
+    const buildFonts = gulp.src('./app/assets/fonts/**/*').pipe(gulp.dest('./dist/assets/fonts/'))
+    const buildImg = gulp.src('./app/assets/fonts/**/*').pipe(gulp.dest('./dist/assets/img/'))
+    const buildJs = gulp.src('./app/assets/js/**/*').pipe(gulp.dest('./dist/assets/js/'))
+    const buildFiles = gulp.src(['./app/*.*', './app/.htaccess']).pipe(gulp.dest('./dist/'));
 });
 
 
+
+gulp.task('watch', () => {
+    gulp.watch('app/assets/sass/**/*.sass', gulp.parallel('sass')); // следим за sass
+    gulp.watch(['app/*.html', 'app/*.php'], gulp.parallel('code')); // следим за HTML и PHP
+    gulp.watch('app/assets/js/*.js', gulp.parallel('script'));      // следим за js
+});
+
+
+// Задачи по умолчанию
 gulp.task('default', gulp.parallel(
     'css',
     'sass',
@@ -91,3 +109,11 @@ gulp.task('default', gulp.parallel(
     'browser-sync',
     'watch'
 ));
+
+
+gulp.task('clean', async function () {
+    return del.sync('./dist/'); // Удаляем папку dist перед сборкой
+});
+
+// Выгрузка в продакшен
+gulp.task('build', gulp.parallel('prebuild', 'clean', 'sass', 'js'));

@@ -1,6 +1,6 @@
 {
   "name": "o2t-gulp-tpl",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Only to top - gulp template",
   "main": "index.js",
   "scripts": {
