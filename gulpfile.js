@@ -45,16 +45,9 @@ gulp.task('code', () => {
         .pipe(browserSync.reload({ stream: true }))
 });
 
-gulp.task('files', () => {
-    return gulp.src([
-        './app/robots.txt',
-        './app/.htaccess'
-    ])
-        .pipe(gulp.dest('./dist/'))
-});
 
 gulp.task('script', () => {
-    return gulp.src('app/assets/js/*.js')
+    return gulp.src('./app/assets/js/*.js')
         .pipe(browserSync.reload({ stream: true }))
 });
 
