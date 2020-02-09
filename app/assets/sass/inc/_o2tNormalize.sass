@@ -41,11 +41,14 @@ body
     line-height: 1.4
     color: $text
     background-color: #fff
-
     min-width: 320px
     min-height: 100vh
     position: relative
     overflow-x: hidden
+    input:invalid,
+    select:invalid
+        box-shadow: none
+        border: 0
 
 input[type="number"]
     -moz-appearance: textfield
