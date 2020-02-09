@@ -4,16 +4,16 @@
 
 <pre>
 app/
-— assets/
-— — css/
-— — fonts/
-— — img/
-— — js/
-— — libs/
-— — sass/
-— index.html
-— mail.php
-— .htaccess
+    assets/
+        css/
+        fonts/
+        img/
+        js/
+        libs/
+        sass/
+    index.html
+    mail.php
+    .htaccess
 </pre>
 
 <b>Libs:</b>
