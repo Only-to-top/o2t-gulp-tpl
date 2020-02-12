@@ -71,11 +71,10 @@
         <input type="email" name="E-mail" placeholder="E-mail*" required>
         <textarea name="Собщение" placeholder="Собщение"></textarea>
         <button class="btn">Отправить</button>
-
-        <input type="hidden" name="project_name" value="SiteName">
-        <input type="hidden" name="admin_email" value="rlytrue2@gmail.com">
-        <!-- <input type="hidden" name="admin_email" value="<?php /* echo get_option('admin_email') */ ?>"> -->
-        <!-- <input type="hidden" name="form_subject" value="Форма со страницы <?php /* echo 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; */ ?>"> -->
+        
+        <!-- <input type="hidden" name="project_name" value="<?php /* bloginfo('name'); */ ?>"> -->
+        <!-- <input type="hidden" name="admin_email" value="<?php /* bloginfo('admin_email'); */ ?>"> -->
+        <!-- <input type="hidden" name="form_subject" value="Форма со страницы /* <?php echo 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; */ ?>"> -->
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
