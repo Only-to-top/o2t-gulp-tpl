@@ -92,7 +92,7 @@ jQuery(function ($) {
 
     // Swiper slider
     if (document.querySelector(".swiper-container--header")) {
-        const swiperHeader = new Swiper('.swiper-container--header', {
+        new Swiper('.swiper-container--header', {
             navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', },
             // pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true, },
             autoplay: { delay: 6500, disableOnInteraction: false, },
@@ -123,6 +123,7 @@ jQuery(function ($) {
                 }
             }
         });
+        const swiperHeader = document.querySelector(".swiper-container--header").swiper;
 
         // stop autoplay swiper on hover
         $(".swiper-container--header").hover(function () {
