@@ -60,6 +60,9 @@ jQuery(function ($) {
                 PREV: "Назад",
             },
         },
+        afterShow: function (instance, current) {
+            $('.fancybox-slide').css('overflow', 'auto');
+        }
     });
     // popup gallery
     $('[data-fancybox="gallery"]').fancybox({
