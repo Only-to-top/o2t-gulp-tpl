@@ -61,7 +61,7 @@ jQuery(function ($) {
             },
         },
         afterShow: function (instance, current) {
-            $('.fancybox-slide').css('overflow', 'auto');
+            // after show
         }
     });
     // popup gallery
