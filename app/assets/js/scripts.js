@@ -124,7 +124,12 @@ jQuery(function ($) {
                     slidesPerView: 4,
                     spaceBetween: 40
                 }
-            }
+            },
+            on: {
+                init: function () {
+                    console.log('swiper initialized');
+                },
+            },
         });
         const swiperHeader = document.querySelector(".swiper-container--header").swiper;
 
