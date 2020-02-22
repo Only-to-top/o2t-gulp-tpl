@@ -114,6 +114,12 @@ body {
   overflow-x: hidden;
 }
 
+body input:invalid,
+body select:invalid {
+  box-shadow: none;
+  border: 0;
+}
+
 input[type="number"] {
   -moz-appearance: textfield;
 }
@@ -227,10 +233,8 @@ body.compensate-for-scrollbar {
 }
 
 @media screen and (max-width: 768px) {
-  .fancybox-content {
-    max-width: calc(100% - 30px);
+  .fancybox-slide--html {
     padding: 20px;
-    margin: 20px;
   }
 }
 

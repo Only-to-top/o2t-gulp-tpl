@@ -33,7 +33,7 @@ gulp.task('sass', () => {
         .pipe(sass({
             outputStyle: 'expanded'
         }).on('eror', notify.onError)) // плагин уведомления об ошибках
-        .pipe(autoprefixer({ grid: true, overrideBrowserlist: ['last 9 versions'] }))
+        .pipe(autoprefixer())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./app/assets/css/'))
         .pipe(browserSync.reload({ stream: true }))
