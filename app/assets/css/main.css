@@ -30,11 +30,11 @@
 }
 
 @font-face {
-  font-family: "Roboto";
+  font-family: "Montserrat";
   font-display: swap;
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/RobotoRegular.woff") format("woff");
+  src: url("../fonts/MontserratRegular.woff2") format("woff2");
 }
 
 ::-moz-selection {
@@ -103,7 +103,7 @@ textarea:focus {
 
 body {
   font-size: 16px;
-  font-family: "Roboto", sans-serif;
+  font-family: Montserrat, sans-serif;
   font-weight: 400;
   line-height: 1.4;
   color: #000;

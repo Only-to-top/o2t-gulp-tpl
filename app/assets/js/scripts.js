@@ -1,5 +1,4 @@
-`use strict`
-
+`use strict`;
 
 jQuery(function ($) {
 
@@ -131,13 +130,12 @@ jQuery(function ($) {
                 },
             },
         });
-        const swiperHeader = document.querySelector(".swiper-container--header").swiper;
 
         // stop autoplay swiper on hover
         $(".swiper-container--header").hover(function () {
-            swiperHeader.autoplay.stop();
+            (this).swiper.autoplay.stop();
         }, function () {
-            swiperHeader.autoplay.start();
+            (this).swiper.autoplay.start();
         });
 
     };// /swiper slider
@@ -167,8 +165,8 @@ jQuery(function ($) {
     }
     equalHeightFunction();
     $(window).resize(equalHeightFunction());
-    
-    
+
+
     // tabs
     $('.tab').on('click', function () {
         let dataTarget = $(this).attr('data-target');

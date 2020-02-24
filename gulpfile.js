@@ -1,19 +1,48 @@
 `use strict`;
 
-let gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    browserSync = require('browser-sync'),
-    concat = require('gulp-concat'),            // объединение файлов
-    rename = require('gulp-rename'),
-    autoprefixer = require('gulp-autoprefixer'),
-    sourcemaps = require('gulp-sourcemaps'),
-    terser = require('gulp-terser'),            // для сжатия JS + es2015
-    notify = require('gulp-notify'),            // уведомления
-    del = require('del');                       // удаление папок и файлов
+const { src, dest, parallel, series, watch } = require('gulp');
+const sass = require('gulp-sass');
+const browserSync = require('browser-sync').create();
+const concat = require('gulp-concat');            // объединение файлов
+const rename = require('gulp-rename');
+const autoprefixer = require('gulp-autoprefixer');
+const sourcemaps = require('gulp-sourcemaps');
+const terser = require('gulp-terser');            // для сжатия JS + es2015
+const notify = require('gulp-notify');            // уведомления
+const del = require('del');                       // удаление папок и файлов
+
+// Подключение webpack
+// const gulpWebpack = require('gulp-webpack');
+// const webpack = require('webpack');
+// const webpackConfig = {
+//     entry: {
+//         scripts: "./app/assets/scripts.js"
+//     },
+//     output: {
+//         filename: "[name].bundle.js"
+//     }
+// };
+
+// webpack
+// function webpackJs() {
+//     return src('app/assets/js/scripts.js')
+//         .pipe(gulpWebpack(webpackConfig, webpack))
+//         .pipe(dest('app/assets/js/'));
+// };
 
 
-gulp.task('css', () => {
-    return gulp.src([
+// Сервер
+function server() {
+    browserSync.init({
+        server: { baseDir: './app/' },
+        // proxy: "http://only-to-top.loc/", // + указываем домен + папку домена
+        notify: false
+    });
+};
+
+
+function css() {
+    return src([
         'app/assets/libs/bootstrap-reboot-4.4.1.min.css',
         'app/assets/libs/font-awesome-pro-all.min.css',
         'app/assets/libs/sweetalert2/sweetalert2.min.css',
@@ -22,38 +51,26 @@ gulp.task('css', () => {
     ])
         .pipe(concat('libs.css'))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('./app/assets/css/'))
-        .pipe(browserSync.reload({ stream: true }))
-});
+        .pipe(dest('./app/assets/css/'))
+        .pipe(browserSync.stream());
+};
 
 
-gulp.task('sass', () => {
-    return gulp.src('app/assets/sass/**/*.sass')
+function SASS() {
+    return src('app/assets/sass/**/*.sass')
         .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'expanded'
         }).on('eror', notify.onError)) // плагин уведомления об ошибках
         .pipe(autoprefixer())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./app/assets/css/'))
-        .pipe(browserSync.reload({ stream: true }))
-});
+        .pipe(dest('./app/assets/css/'))
+        .pipe(browserSync.stream())
+};
 
 
-gulp.task('code', () => {
-    return gulp.src(['app/*.html', 'app/*.php'])
-        .pipe(browserSync.reload({ stream: true }))
-});
-
-
-gulp.task('script', () => {
-    return gulp.src('./app/assets/js/*.js')
-        .pipe(browserSync.reload({ stream: true }))
-});
-
-
-gulp.task('js', () => {
-    return gulp.src([
+function scripts() {
+    return src([
         'app/assets/libs/swiper-5.2.1/swiper.min.js',
         'app/assets/libs/sweetalert2/sweetalert2.min.js',
         'app/assets/libs/fancybox/jquery.fancybox.min.js',
@@ -61,52 +78,44 @@ gulp.task('js', () => {
     ])
         .pipe(concat('libs.min.js'))
         .pipe(terser())
-        .pipe(gulp.dest('./app/assets/js/'))
-        .pipe(browserSync.reload({ stream: true }))
-});
-
-
-gulp.task('browser-sync', () => {
-    browserSync.init({
-        server: {
-            baseDir: "./app/"
-        },
-        notify: false
-    });
-});
+        .pipe(dest('./app/assets/js/'))
+        .pipe(browserSync.stream());
+};
 
 
 
-gulp.task('prebuild', async () => { // перенос контента в продакшен
-    const buildCss = gulp.src(['./app/assets/css/main.css', './app/assets/css/libs.min.css']).pipe(gulp.dest('./dist/assets/css/'))
-    const buildFonts = gulp.src('./app/assets/fonts/**/*').pipe(gulp.dest('./dist/assets/fonts/'))
-    const buildImg = gulp.src('./app/assets/fonts/**/*').pipe(gulp.dest('./dist/assets/img/'))
-    const buildJs = gulp.src('./app/assets/js/**/*').pipe(gulp.dest('./dist/assets/js/'))
-    const buildFiles = gulp.src(['./app/*.*', './app/.htaccess']).pipe(gulp.dest('./dist/'));
-});
+async function prebuild() { // перенос контента в продакшен
+    src(['./app/assets/css/main.css', './app/assets/css/libs.min.css']).pipe(dest('./dist/assets/css/'))
+    src('./app/assets/fonts/**/*').pipe(dest('./dist/assets/fonts/'))
+    src('./app/assets/img/**/*').pipe(dest('./dist/assets/img/'))
+    src('./app/assets/js/*.js').pipe(dest('./dist/assets/js/'))
+    src(['./app/*.*', './app/.htaccess']).pipe(dest('./dist/'));
+};
 
 
-
-gulp.task('watch', () => {
-    gulp.watch('app/assets/sass/**/*.sass', gulp.parallel('sass')); // следим за sass
-    gulp.watch(['app/*.html', 'app/*.php'], gulp.parallel('code')); // следим за HTML и PHP
-    gulp.watch('app/assets/js/*.js', gulp.parallel('script'));      // следим за js
-});
-
-
-// Задачи по умолчанию
-gulp.task('default', gulp.parallel(
-    'css',
-    'sass',
-    'js',
-    'browser-sync',
-    'watch'
-));
+// Слежение за файлами
+function watching() {
+    watch('app/assets/sass/**/*.sass', parallel('SASS'));                       // следим за sass
+    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], parallel('scripts'));  // следим за js
+    watch(['app/**/*.{html,php,json,jpg,jpeg,png,webp,svg}']).on('change', browserSync.reload);
+};
 
 
-gulp.task('clean', async function () {
-    return del.sync('./dist/'); // Удаляем папку dist перед сборкой
-});
+// Удаление папки «dist»
+function clean() {
+    return del('./dist/'); // Удаляем папку dist перед сборкой
+};
+
+
+exports.scripts = scripts;
+exports.css = css;
+exports.SASS = SASS;
+exports.clean = clean;
+exports.prebuild = prebuild;
+
 
 // Выгрузка в продакшен
-gulp.task('build', gulp.parallel('prebuild', 'clean', 'sass', 'js'));
+exports.build = series(clean, prebuild, SASS, scripts);
+
+// Задачи по умолчанию
+exports.default = parallel(css, SASS, scripts, watching, server);
