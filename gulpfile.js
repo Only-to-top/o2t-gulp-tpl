@@ -68,6 +68,17 @@ function SASS() {
         .pipe(browserSync.stream())
 };
 
+// without sourcemaps
+function SASSProduction() {
+    return src('app/assets/sass/**/*.sass')
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }).on('eror', notify.onError)) // плагин уведомления об ошибках
+        .pipe(autoprefixer())
+        .pipe(dest('./app/assets/css/'))
+        .pipe(browserSync.stream())
+};
+
 
 function scripts() {
     return src([
@@ -83,7 +94,6 @@ function scripts() {
 };
 
 
-
 async function prebuild() { // перенос контента в продакшен
     src(['./app/assets/css/main.css', './app/assets/css/libs.min.css']).pipe(dest('./dist/assets/css/'))
     src('./app/assets/fonts/**/*').pipe(dest('./dist/assets/fonts/'))
@@ -95,7 +105,7 @@ async function prebuild() { // перенос контента в продакш
 
 // Слежение за файлами
 function watching() {
-    watch('app/assets/sass/**/*.sass', parallel('SASS'));                       // следим за sass
+    watch('app/assets/sass/**/*.sass', parallel('SASS'));                              // следим за sass
     watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], parallel('scripts'));  // следим за js
     watch(['app/**/*.{html,php,json,jpg,jpeg,png,webp,svg}']).on('change', browserSync.reload);
 };
@@ -110,12 +120,12 @@ function clean() {
 exports.scripts = scripts;
 exports.css = css;
 exports.SASS = SASS;
+exports.SASSProduction = SASSProduction;
 exports.clean = clean;
 exports.prebuild = prebuild;
 
-
-// Выгрузка в продакшен
-exports.build = series(clean, prebuild, SASS, scripts);
-
 // Задачи по умолчанию
 exports.default = parallel(css, SASS, scripts, watching, server);
+
+// Выгрузка в продакшен
+exports.build = series(clean, parallel(SASSProduction, scripts), prebuild);
