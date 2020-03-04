@@ -93,50 +93,55 @@ jQuery(function ($) {
 
 
     // Swiper slider
-    if (document.querySelector(".swiper-container--header")) {
-        new Swiper('.swiper-container--header', {
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', },
-            // pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true, },
-            autoplay: { delay: 6500, disableOnInteraction: false, },
-            spaceBetween: 20, // расст-е м-у слайдами
-            grabCursor: true, // рука
-            loop: true,
-            // centeredSlides: true,
-            breakpoints: {
-                0: {                    // >= 0
-                    slidesPerView: 1,
-                    spaceBetween: 20
+    if (document.querySelector(".swiper-container--1x")) {
+        $(".swiper-container--1x").each(function (index) {
+            $(this).addClass("sw-slider-" + index);
+            $(this).find(".swiper-button-prev").addClass("btn-prev-" + index);
+            $(this).find(".swiper-button-next").addClass("btn-next-" + index);
+            $(this).find(".swiper-pagination").addClass("sw-pagi-" + index);
+            
+            new Swiper(".sw-slider-" + index, {
+                pagination: { el: ".sw-pagi-" + index, clickable: true },
+                navigation: { nextEl: ".btn-next-" + index, prevEl: ".btn-prev-" + index, },
+                autoplay: { delay: 6500, disableOnInteraction: false, },
+                spaceBetween: 20, // расст-е м-у слайдами
+                grabCursor: true, // рука
+                loop: true,
+                // centeredSlides: true,
+                breakpoints: {
+                    0: {                    // >= 0
+                        slidesPerView: 1,
+                        spaceBetween: 20
+                    },
+                    480: {                  // >= 480px
+                        slidesPerView: 2,
+                        spaceBetween: 30
+                    },
+                    768: {                  // >= 768px
+                        slidesPerView: 3,
+                        spaceBetween: 30
+                    },
+                    992: {                  // >= 992px
+                        slidesPerView: 3,
+                        spaceBetween: 30
+                    },
+                    1200: {                 // >= 1200px
+                        slidesPerView: 4,
+                        spaceBetween: 40
+                    }
                 },
-                480: {                  // >= 480px
-                    slidesPerView: 2,
-                    spaceBetween: 30
+                on: {
+                    init: function () {
+                        console.log('swiper initialized');
+                    },
                 },
-                768: {                  // >= 768px
-                    slidesPerView: 3,
-                    spaceBetween: 30
-                },
-                992: {                  // >= 992px
-                    slidesPerView: 3,
-                    spaceBetween: 30
-                },
-                1200: {                 // >= 1200px
-                    slidesPerView: 4,
-                    spaceBetween: 40
-                }
-            },
-            on: {
-                init: function () {
-                    console.log('swiper initialized');
-                },
-            },
+            });
         });
 
         // stop autoplay swiper on hover
-        $(".swiper-container--header").hover(function () {
+        $(".swiper-container--1x").hover(function () {
             (this).swiper.autoplay.stop();
-        }, function () {
-            (this).swiper.autoplay.start();
-        });
+        }, function () { (this).swiper.autoplay.start(); });
 
     };// /swiper slider
 
