@@ -72,11 +72,13 @@ jQuery(function ($) {
 
 
     // Checked input type checkbox ?
-    $('.btn-send-form').on('click', function () {
-        if ($('form input[type=checkbox]').is(':checked')) {
-            $('form .checkbox-new').removeClass('red');
+    $('.mycheckbox').on('click', 'input', function () {
+        if ($(this).is(':checked')) {
+            $('.register-btn').prop('disabled', false);
+            $(this).parent().removeClass('error');
         } else {
-            $('form .checkbox-new').addClass('red');
+            $('.register-btn').prop('disabled', true);
+            $(this).parent().addClass('error');
         }
     });
 
