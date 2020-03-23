@@ -15,11 +15,8 @@ const del = require('del');                       // удаление папок
 // const gulpWebpack = require('gulp-webpack');
 // const webpack = require('webpack');
 // const webpackConfig = {
-//     entry: {
-//         scripts: "./app/assets/scripts.js"
-//     },
 //     output: {
-//         filename: "[name].bundle.js"
+//         filename: "bundle.js"
 //     }
 // };
 
@@ -117,6 +114,7 @@ function clean() {
 };
 
 
+// exports.webpackJs = webpackJs;
 exports.scripts = scripts;
 exports.css = css;
 exports.SASS = SASS;
