@@ -212,6 +212,14 @@ a:hover {
   color: #222;
   font-size: 30px;
   padding: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
 }
 
 .fancybox-lock {

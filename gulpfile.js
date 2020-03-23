@@ -28,16 +28,6 @@ const del = require('del');                       // удаление папок
 // };
 
 
-// Сервер
-function server() {
-    browserSync.init({
-        server: { baseDir: './app/' },
-        // proxy: "http://only-to-top.loc/", // + указываем домен + папку домена
-        notify: false
-    });
-};
-
-
 function css() {
     return src([
         'app/assets/libs/bootstrap-reboot-4.4.1.min.css',
@@ -99,18 +89,23 @@ async function prebuild() { // перенос контента в продакш
     src(['./app/*.*', './app/.htaccess']).pipe(dest('./dist/'));
 };
 
-
-// Слежение за файлами
-function watching() {
-    watch('app/assets/sass/**/*.sass', parallel('SASS'));                              // следим за sass
-    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], parallel('scripts'));  // следим за js
-    watch(['app/**/*.{html,php,json,jpg,jpeg,png,webp,svg}']).on('change', browserSync.reload);
-};
-
-
 // Удаление папки «dist»
 function clean() {
     return del('./dist/'); // Удаляем папку dist перед сборкой
+};
+
+
+// Сервер + Слежение за файлами
+function server() {
+    browserSync.init({
+        server: { baseDir: './app/' },
+        // proxy: "http://only-to-top.loc/", // + указываем домен + папку домена
+        notify: false
+    });
+
+    watch('app/assets/sass/**/*.sass', parallel('SASS'));                              // следим за sass
+    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], parallel('scripts'));  // следим за js
+    watch(['app/**/*.{html,php,json,jpg,jpeg,png,webp,svg}']).on('change', browserSync.reload);
 };
 
 
@@ -123,7 +118,7 @@ exports.clean = clean;
 exports.prebuild = prebuild;
 
 // Задачи по умолчанию
-exports.default = parallel(css, SASS, scripts, watching, server);
+exports.default = parallel(css, SASS, scripts, server);
 
 // Выгрузка в продакшен
 exports.build = series(clean, parallel(SASSProduction, scripts), prebuild);
