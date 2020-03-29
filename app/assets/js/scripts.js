@@ -110,6 +110,10 @@ jQuery(function ($) {
                 grabCursor: true, // рука
                 loop: true,
                 // centeredSlides: true,
+                //effect: 'fade',
+                //fadeEffect: {
+                //    crossFade: true
+                //},
                 breakpoints: {
                     0: {                    // >= 0
                         slidesPerView: 1,
