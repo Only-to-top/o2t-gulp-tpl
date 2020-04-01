@@ -60,7 +60,7 @@ jQuery(function ($) {
             },
         },
         afterShow: function (instance, current) {
-            // after show
+            $('.fancybox-slide').css('overflow', 'auto');
         }
     });
     // popup gallery
@@ -101,7 +101,7 @@ jQuery(function ($) {
             $(this).find(".swiper-button-prev").addClass("btn-prev-" + index);
             $(this).find(".swiper-button-next").addClass("btn-next-" + index);
             $(this).find(".swiper-pagination").addClass("sw-pagi-" + index);
-            
+
             new Swiper(".sw-slider-" + index, {
                 pagination: { el: ".sw-pagi-" + index, clickable: true },
                 navigation: { nextEl: ".btn-next-" + index, prevEl: ".btn-prev-" + index, },
