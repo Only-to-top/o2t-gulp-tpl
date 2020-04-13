@@ -103,7 +103,7 @@ textarea:focus {
 
 body {
   font-size: 16px;
-  font-family: Montserrat, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   line-height: 1.4;
   color: #000;
@@ -114,10 +114,20 @@ body {
   overflow-x: hidden;
 }
 
-body input:invalid,
-body select:invalid {
+body input,
+body select {
+  color: #000;
+}
+
+body input:focus,
+body select:focus {
+  border-color: #FFD600;
+}
+
+body input:invalid:focus,
+body select:invalid:focus {
   box-shadow: none;
-  border: 0;
+  border-color: #FFD600;
 }
 
 input[type="number"] {
@@ -207,6 +217,10 @@ a:hover {
 
 .fancybox-content {
   overflow-x: hidden;
+}
+
+.fancybox-slide {
+  overflow: hidden;
 }
 
 .fancybox-slide--html .fancybox-close-small {
