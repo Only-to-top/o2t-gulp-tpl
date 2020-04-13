@@ -24,7 +24,7 @@ app/
     <li><a href="https://swiperjs.com/demos/" target="_blank">Swiper <b><i>v5.2.1</i></b></a></li>
     <li><a href="https://fancyapps.com/fancybox/3/" target="_blank">fancybox <b><i>v3.5.6</i></b></a></li>
     <li><a href="https://igorescobar.github.io/jQuery-Mask-Plugin/" target="_blank">jQuery Mask Plugin <b><i>v1.14.16</i></b></a></li>
-    <li><a href="https://sweetalert2.github.io/" target="_blank">SweetAlert2</a></li>
+    <li><a href="https://sweetalert.js.org/guides/" target="_blank">SweetAlert</a></li>
  </ul>
 
 <b>JavaScript:</b>

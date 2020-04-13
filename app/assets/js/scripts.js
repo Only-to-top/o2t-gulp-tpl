@@ -222,9 +222,18 @@ document.addEventListener('DOMContentLoaded', () => {
             body: formData
         }).then(function (response) {
             $('.fancybox-close-small').click(); // close fancy popup
-            swal({ title: titleForm, text: textForm, type: 'success' });
+            swal({ 
+                title: titleForm, 
+                text: textForm, 
+                icon: 'success',
+                button: 'Ok'
+            });
         }).catch(function (error) {
-            console.error(error);
+            swal({ 
+                title: error,
+                icon: 'error',
+                button: 'Ok'
+            });
         })
     }
 

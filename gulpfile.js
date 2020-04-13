@@ -32,7 +32,6 @@ function css() {
     return src([
         'app/assets/libs/bootstrap-reboot-4.4.1.min.css',
         'app/assets/libs/font-awesome-pro-all.min.css',
-        'app/assets/libs/sweetalert2/sweetalert2.min.css',
         'app/assets/libs/swiper-5.2.1/swiper.min.css',
         'app/assets/libs/fancybox/jquery.fancybox.min.css',
     ])
@@ -71,7 +70,7 @@ function scripts() {
     return src([
         'app/assets/libs/jquery-3.5.0.min.js',
         'app/assets/libs/swiper-5.2.1/swiper.min.js',
-        'app/assets/libs/sweetalert2/sweetalert2.min.js',
+        'app/assets/libs/sweetalert/sweetalert.min.js',
         'app/assets/libs/fancybox/jquery.fancybox.min.js',
         'app/assets/libs/jquery.mask.min.js',
     ])
