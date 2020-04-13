@@ -45,10 +45,18 @@ body
     min-height: 100vh
     position: relative
     overflow-x: hidden
-    input:invalid,
-    select:invalid
-        box-shadow: none
-        border: 0
+    input,
+    select
+        color: $text
+        &:focus
+            border-color: $accent
+        &:invalid:focus
+        &:invalid:focus
+            box-shadow: none
+            border-color: $accent
+    input
+        &::placeholder
+
 
 input[type="number"]
     -moz-appearance: textfield

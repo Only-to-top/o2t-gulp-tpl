@@ -40,3 +40,5 @@ $headers = "MIME-Version: 1.0" . PHP_EOL .
 'Reply-To: '.$admin_email.'' . PHP_EOL;
 
 mail($admin_email, adopt($form_subject), $message, $headers );
+
+// file_put_contents(__DIR__.'/file.txt', print_r('$_POST', 1), FILE_APPEND); # look what came
