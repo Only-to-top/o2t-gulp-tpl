@@ -23,7 +23,7 @@ app/
     <li>bootstrap-reboot (css)</li>
     <li>Swiper (css, js)</li>
     <li>fancybox (css, js)</li>
-    <li>jquery.mask (js)</li>
+    <li>[https://igorescobar.github.io/jQuery-Mask-Plugin/](jQuery Mask Plugin) </li>
     <li>SweetAlert2 (css, js)</li>
  </ul>
 
