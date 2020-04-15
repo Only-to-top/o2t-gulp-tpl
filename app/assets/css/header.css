@@ -1,0 +1,200 @@
+.container,
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/MontserratRegular.woff2") format("woff2");
+}
+
+::-moz-selection {
+  background-color: #FFD600;
+  color: #fff;
+}
+
+::selection {
+  background-color: #FFD600;
+  color: #fff;
+}
+
+select:focus,
+select:hover,
+option:hover,
+option:focus {
+  box-shadow: none;
+  border: none;
+  outline: none;
+  border: transparent;
+}
+
+::-webkit-input-placeholder {
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  opacity: 1;
+}
+
+::placeholder {
+  opacity: 1;
+}
+
+button {
+  border: none;
+}
+
+select[disabled],
+button[disabled] {
+  cursor: not-allowed;
+}
+
+label, a {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+button:focus,
+a:focus,
+* [role="button"]:focus,
+input:focus,
+textarea:focus {
+  outline: none !important;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #000;
+  background-color: #fff;
+  min-width: 320px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body input,
+body select {
+  color: #000;
+}
+
+body input:focus,
+body select:focus {
+  border-color: #FFD600;
+}
+
+body input:invalid:focus,
+body select:invalid:focus {
+  box-shadow: none;
+  border-color: #FFD600;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]:focus,
+input[type="number"]:hover {
+  -moz-appearance: number-input;
+}
+
+textarea {
+  resize: vertical;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul, ol {
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+.img-resp {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tac {
+  text-align: center;
+}
+
+.tar {
+  text-align: right;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}
+
+a {
+  -webkit-transition: .25s all;
+  transition: .25s all;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #FFD600;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 12px 35px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=header.css.map */

@@ -1,25 +1,25 @@
 // grids
 
-.container
-    max-width: 1140px
+.container,
+.container-fluid
     width: 100%
-    padding-left: 20px
-    padding-right: 20px
-    margin-left: auto
+    padding-right: 15px
+    padding-left: 15px
     margin-right: auto
+    margin-left: auto
 
-@media only screen and (max-width : 992px)
+@media (min-width: 576px)
     .container
-        max-width: 960px
+        max-width: 540px
 
-@media only screen and (max-width : 768px)
+@media (min-width: 768px)
     .container
         max-width: 720px
 
-@media only screen and (max-width : 576px)
+@media (min-width: 992px)
     .container
-        overflow: hidden
-        max-width: 540px
-    .header
-        .container
-            overflow: visible
+        max-width: 960px
+
+@media (min-width: 1200px)
+    .container
+        max-width: 1140px
