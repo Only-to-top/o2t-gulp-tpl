@@ -68,7 +68,7 @@ function SASSProduction() {
 
 function scripts() {
     return src([
-        'app/assets/libs/jquery-3.5.0.min.js',
+        // 'app/assets/libs/jquery-3.5.0.min.js',
         'app/assets/libs/swiper-5.2.1/swiper.min.js',
         'app/assets/libs/sweetalert/sweetalert.min.js',
         'app/assets/libs/fancybox/jquery.fancybox.min.js',
