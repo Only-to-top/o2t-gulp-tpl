@@ -46,10 +46,9 @@ jQuery(function ($) {
     $('[data-fancybox]').fancybox({
         animationEffect: 'fade',
         animationDuration: 555,
-        // smallBtn: false,
         btnTpl: {
             smallBtn:
-                `<button data-fancybox-close class="fancybox-button fancybox-close-small" title="{{CLOSE}}">×</button>`,
+                `<button data-fancybox-close class="fancybox-button fancybox-close-small" title="{{Закрыть}}">×</button>`,
         },
         lang: "ru",
         i18n: {
@@ -216,36 +215,48 @@ jQuery(function ($) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const ajaxSend = (formData, titleForm, textForm) => {
-        fetch('/mail.php', {
-            method: 'POST',
-            body: formData
-        }).then(function (response) {
-            $('.fancybox-close-small').click(); // close fancy popup
-            swal({ 
-                title: titleForm, 
-                text: textForm, 
-                icon: 'success',
-                button: 'Ok'
-            });
-        }).catch(function (error) {
-            swal({ 
-                title: error,
-                icon: 'error',
-                button: 'Ok'
-            });
-        })
-    }
-
     if (document.querySelector(".form")) {
+
+        // email ajax send forms
+        const ajaxSend = async (url, formData) => {
+
+            // ждём ответ, только тогда наш код пойдёт дальше
+            let fetchResponse = await fetch(url, {
+                method: 'POST',
+                body: formData
+            });
+
+            // ждём окончания операции
+            return await fetchResponse.text();
+        }
+
         document.querySelectorAll('.form').forEach(el => {
             el.addEventListener('submit', function (e) {
                 e.preventDefault();
                 const formData = new FormData(this);
-                ajaxSend(formData, 'Спасибо!', 'Данные отправлены.');
-                this.reset(); // очищаем поля формы
+
+                ajaxSend('./mail.php', formData)
+                    .then(function (fetchResponse) {
+                        document.querySelector('.fancybox-close-small').click(); // close fancy popup
+                        swal({
+                            title: 'Спасибо!',
+                            text: 'Данные отправлены.',
+                            icon: 'success',
+                            button: 'Ok'
+                        });
+                        console.log(fetchResponse);
+                    }).catch(function (error) {
+                        swal({
+                            title: error,
+                            icon: 'error',
+                            button: 'Ok'
+                        });
+                    });
+
+                // this.reset();
             });
         });
+
     }
 
 });
