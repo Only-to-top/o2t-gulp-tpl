@@ -5,40 +5,21 @@ jQuery(function ($) {
 
     // menu
     const menu = $('.header-menu');
-    const menuOpen = function () {
-        if ($(this).hasClass('is-active')) {
-            $(this).removeClass('is-active');
-            menu.stop().slideUp();
-        } else {
-            $(this).addClass('is-active');
+    const hamburger = $('.hamburger');
+
+    $(document).mouseup(function (e) {
+        if (e.target.className === 'hamburger') {
+            hamburger.addClass('is-active');
             menu.stop().slideDown();
+        } else if (e.target.className === 'hamburger is-active') {
+            hamburger.removeClass('is-active');
+            menu.stop().slideUp();
+        } else if ((menu.has(e.target).length === 0) && (hamburger.has(e.target).length === 0)) {
+            if ($(window).width() < 768) {
+                hamburger.removeClass('is-active');
+                menu.stop().slideUp();
+            }
         }
-    };
-    $('.hamburger').on('click', menuOpen);
-
-    // close menu
-    const closeMenuFunc = () => {
-        if ($(window).width() < 992) {
-            $(document).mouseup(function (e) { //Скрыть меню при клике вне его
-                const hamburger = $('.hamburger');
-
-                if ((menu.has(e.target).length === 0) && (hamburger.has(e.target).length === 0)) {
-                    menu.stop().slideUp();
-
-                    if (hamburger.hasClass('is-active')) {
-                        hamburger.removeClass('is-active');
-                    };
-                };
-            });
-        };
-    };
-    closeMenuFunc();
-    $(window).resize(closeMenuFunc);
-
-
-    // anchor link => title popup
-    $('a[data-src="#main-form"]').click(function () {
-        $("#main-form .title").html($(this).text()); //текст ссылки вставляем в название модального окна
     });
 
 
@@ -47,8 +28,7 @@ jQuery(function ($) {
         animationEffect: 'fade',
         animationDuration: 555,
         btnTpl: {
-            smallBtn:
-                `<button data-fancybox-close class="fancybox-button fancybox-close-small" title="{{Закрыть}}">×</button>`,
+            smallBtn: `<button data-fancybox-close class="fancybox-button fancybox-close-small" title="Закрыть">×</button>`,
         },
         lang: "ru",
         i18n: {
@@ -70,18 +50,6 @@ jQuery(function ($) {
     });
 
 
-    // Checked input type checkbox ?
-    $('.mycheckbox').on('click', 'input', function () {
-        if ($(this).is(':checked')) {
-            $('.register-btn').prop('disabled', false);
-            $(this).parent().removeClass('error');
-        } else {
-            $('.register-btn').prop('disabled', true);
-            $(this).parent().addClass('error');
-        }
-    });
-
-
     // hide block on click outside
     if ($(window).width() < 768) {
         $(document).mouseup(function (e) {
@@ -97,12 +65,12 @@ jQuery(function ($) {
     if (document.querySelector(".swiper-container--1x")) {
         $(".swiper-container--1x").each(function (index) {
             $(this).addClass("sw-slider-" + index);
-            $(this).find(".swiper-button-prev").addClass("btn-prev-" + index);
-            $(this).find(".swiper-button-next").addClass("btn-next-" + index);
-            $(this).find(".swiper-pagination").addClass("sw-pagi-" + index);
+            $(this).parent().find(".swiper-button-prev").addClass("btn-prev-" + index);
+            $(this).parent().find(".swiper-button-next").addClass("btn-next-" + index);
+            // $(this).parent().find(".swiper-pagination").addClass("sw-pagi-" + index);
 
             new Swiper(".sw-slider-" + index, {
-                pagination: { el: ".sw-pagi-" + index, clickable: true },
+                // pagination: { el: ".sw-pagi-" + index, clickable: true },
                 navigation: { nextEl: ".btn-next-" + index, prevEl: ".btn-prev-" + index, },
                 autoplay: { delay: 6500, disableOnInteraction: false, },
                 spaceBetween: 20, // расст-е м-у слайдами
@@ -113,33 +81,18 @@ jQuery(function ($) {
                 //fadeEffect: {
                 //    crossFade: true
                 //},
-                breakpoints: {
-                    0: {                    // >= 0
-                        slidesPerView: 1,
-                        spaceBetween: 20
-                    },
-                    480: {                  // >= 480px
-                        slidesPerView: 2,
-                        spaceBetween: 30
-                    },
-                    768: {                  // >= 768px
-                        slidesPerView: 3,
-                        spaceBetween: 30
-                    },
-                    992: {                  // >= 992px
-                        slidesPerView: 3,
-                        spaceBetween: 30
-                    },
-                    1200: {                 // >= 1200px
-                        slidesPerView: 4,
-                        spaceBetween: 40
-                    }
+                breakpoints: { // mobile first
+                    0: { slidesPerView: 1 },
+                    480: { slidesPerView: 2 },
+                    768: { slidesPerView: 3 },
+                    992: { slidesPerView: 3 },
+                    1200: { slidesPerView: 4 }
                 },
-                on: {
-                    init: function () {
-                        console.log('swiper initialized');
-                    },
-                },
+                // on: {
+                //     init: function () {
+                //         console.log('swiper initialized');
+                //     },
+                // },
             });
         });
 
