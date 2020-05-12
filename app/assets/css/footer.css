@@ -9,12 +9,18 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #FFD600;
+  color: var(--accent);
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
   font-size: 27px;
+}
+
+:root {
+  --ff: 'Montserrat', sans-serif;
+  --accent: #FFD600;
+  --text: #000;
 }
 
 .fancybox-bg {
@@ -78,8 +84,8 @@ body.compensate-for-scrollbar {
   border-bottom: 4px solid #222;
   color: #222;
   font-size: 0;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
   outline: none;
 }
 
@@ -94,10 +100,10 @@ body.compensate-for-scrollbar {
   background: currentColor;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-transition: -webkit-transform 0.2s ease-in-out;
-  transition: -webkit-transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  transition: -webkit-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
 }
 
 .hamburger.is-active {

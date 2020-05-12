@@ -1,8 +1,8 @@
-@import "vars"
-
 ::selection
-    background-color: $accent
+    background-color: var(--accent)
     color: #fff
+    transition: background-color 0.3s ease-out
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 
 select:focus,
 select:hover,
@@ -34,12 +34,18 @@ textarea
     &:focus
         outline: none!important
 
+input,
+textarea
+    &:focus
+        box-shadow: 0 0 3px #053240
+
 body
+    font-family: var(--ff)
+    color: var(--text)
+
     font-size: 16px
-    font-family: $ff
     font-weight: 400
     line-height: 1.4
-    color: $text
     background-color: #fff
     min-width: 320px
     min-height: 100vh
@@ -47,13 +53,13 @@ body
     overflow-x: hidden
     input,
     select
-        color: $text
+        color: var(--text)
         &:focus
-            border-color: $accent
+            border-color: var(--accent)
         &:invalid:focus
         &:invalid:focus
             box-shadow: none
-            border-color: $accent
+            border-color: var(--accent)
     input
         &::placeholder
 
@@ -101,7 +107,7 @@ a
     transition: .25s all
     &:hover
         text-decoration: none
-        color: $accent
+        color: var(--accent)
 
 .btn
     cursor: pointer

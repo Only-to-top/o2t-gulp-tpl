@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 const formData = new FormData(this);
 
-                ajaxSend('./mail.php', formData)
+                ajaxSend('/mail.php', formData)
                     .then(function (fetchResponse) {
                         document.querySelector('.fancybox-close-small').click(); // close fancy popup
                         swal({

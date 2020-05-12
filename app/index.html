@@ -21,7 +21,9 @@
 
 <body>
 
-    <button class="hamburger"></button>
+    <div class="container">
+        <button class="hamburger"></button>
+    </div>
 
 
     <a data-src="#popupForm" data-fancybox data-type="inline" class="btn btn-accent">
@@ -29,7 +31,7 @@
     </a>
 
 
-    <div class="swiper-container__wrapper">
+    <div class="swiper-container__wrapper" hidden>
         <div class="swiper-container swiper-container--1x">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">Slide 1</div>
@@ -38,7 +40,6 @@
                 <div class="swiper-slide">Slide 4</div>
             </div>
         </div>
-
         <div class="swiper-pagination"></div>
         <div class="swiper-buttons"><div class="swiper-button-prev"></div><div class="swiper-button-next"></div></div>
     </div><!-- / slider -->
