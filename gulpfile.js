@@ -31,8 +31,8 @@ const del = require('del');                       // удаление папок
 function css() {
     return src([
         'app/assets/libs/bootstrap-reboot-4.4.1.min.css',
-        'app/assets/libs/font-awesome-pro-all.min.css',
-        'app/assets/libs/swiper-5.2.1/swiper.min.css',
+        // 'app/assets/libs/font-awesome-pro-all.min.css',
+        'app/assets/libs/swiper-5.4.2/swiper.min.css',
         'app/assets/libs/fancybox/jquery.fancybox.min.css',
     ])
         .pipe(concat('libs.css'))
@@ -69,7 +69,7 @@ function SASSProduction() {
 function scripts() {
     return src([
         // 'app/assets/libs/jquery-3.5.0.min.js',
-        'app/assets/libs/swiper-5.2.1/swiper.min.js',
+        'app/assets/libs/swiper-5.4.2/swiper.min.js',
         'app/assets/libs/sweetalert/sweetalert.min.js',
         'app/assets/libs/fancybox/jquery.fancybox.min.js',
         'app/assets/libs/jquery.mask.min.js',
@@ -82,7 +82,7 @@ function scripts() {
 
 
 async function prebuild() { // перенос контента в продакшен
-    src(['./app/assets/css/main.css', './app/assets/css/libs.min.css']).pipe(dest('./dist/assets/css/'))
+    src('./app/assets/css/*.css').pipe(dest('./dist/assets/css/'))
     src('./app/assets/fonts/**/*').pipe(dest('./dist/assets/fonts/'))
     src('./app/assets/img/**/*').pipe(dest('./dist/assets/img/'))
     src('./app/assets/js/*.js').pipe(dest('./dist/assets/js/'))

@@ -4,26 +4,6 @@
   --text: #000;
 }
 
-/* Grid */
-.container::before {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  content: '';
-  pointer-events: none;
-  --grid-color: rgb(255 0 0 / 0.1);
-  --grid-sides: 405px;
-  --grid-gutter: 30px;
-  --grid-columns: 12;
-  --grid-column-width: calc( (100% - var(--grid-gutter) * var(--grid-columns)) / var(--grid-columns) );
-  border: solid transparent;
-  border-width: 0 calc( var(--grid-sides) - var(--grid-gutter) / 2);
-  background-image: repeating-linear-gradient(to right, transparent 0, transparent calc(var(--grid-gutter) / 2), var(--grid-color) calc(var(--grid-gutter) / 2), var(--grid-color) calc(var(--grid-column-width) + var(--grid-gutter) / 2), transparent calc(var(--grid-column-width) + var(--grid-gutter) / 2), transparent calc(var(--grid-column-width) + var(--grid-gutter)));
-  background-repeat: no-repeat;
-}
-
 .container,
 .container-fluid {
   width: 100%;
@@ -85,7 +65,8 @@ select:focus,
 select:hover,
 option:hover,
 option:focus {
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border: none;
   outline: none;
   border: transparent;
@@ -137,7 +118,8 @@ textarea:focus {
 
 input:focus,
 textarea:focus {
-  box-shadow: 0 0 3px #053240;
+  -webkit-box-shadow: 0 0 3px #053240;
+          box-shadow: 0 0 3px #053240;
 }
 
 body {
@@ -161,12 +143,13 @@ body select {
 
 body input:focus,
 body select:focus {
-  border-color: var(--accent);
+  border-color: var(--text);
 }
 
 body input:invalid:focus,
 body select:invalid:focus {
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-color: var(--accent);
 }
 

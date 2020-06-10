@@ -63,37 +63,20 @@ jQuery(function ($) {
 
     // Swiper slider
     if (document.querySelector(".swiper-container--1x")) {
-        $(".swiper-container--1x").each(function (index) {
-            $(this).addClass("sw-slider-" + index);
-            $(this).parent().find(".swiper-button-prev").addClass("btn-prev-" + index);
-            $(this).parent().find(".swiper-button-next").addClass("btn-next-" + index);
-            // $(this).parent().find(".swiper-pagination").addClass("sw-pagi-" + index);
-
-            new Swiper(".sw-slider-" + index, {
-                // pagination: { el: ".sw-pagi-" + index, clickable: true },
-                navigation: { nextEl: ".btn-next-" + index, prevEl: ".btn-prev-" + index, },
-                autoplay: { delay: 6500, disableOnInteraction: false, },
-                spaceBetween: 20, // расст-е м-у слайдами
-                grabCursor: true, // рука
-                loop: true,
-                // centeredSlides: true,
-                //effect: 'fade',
-                //fadeEffect: {
-                //    crossFade: true
-                //},
-                breakpoints: { // mobile first
-                    0: { slidesPerView: 1 },
-                    480: { slidesPerView: 2 },
-                    768: { slidesPerView: 3 },
-                    992: { slidesPerView: 3 },
-                    1200: { slidesPerView: 4 }
-                },
-                // on: {
-                //     init: function () {
-                //         console.log('swiper initialized');
-                //     },
-                // },
-            });
+        new Swiper(".swiper-container--1x", {
+            // pagination: { el: ".swiper-pagination--1x", clickable: true },
+            navigation: { prevEl: ".swiper-button-prev--1x", nextEl: ".swiper-button-next--1x" },
+            autoplay: { delay: 6500, disableOnInteraction: false, },
+            spaceBetween: 20,
+            grabCursor: true,
+            loop: true,
+            breakpoints: { // mobile first
+                0: { slidesPerView: 1 },
+                480: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                992: { slidesPerView: 3 },
+                1200: { slidesPerView: 4 }
+            },
         });
 
         // stop autoplay swiper on hover
