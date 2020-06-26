@@ -2,7 +2,6 @@
 
 jQuery(function ($) {
 
-
     // menu
     const menu = $('.header-menu');
     const hamburger = $('.hamburger');
