@@ -45,9 +45,18 @@
     src: url("../fonts/MontserratRegular.woff2") format("woff2");
 }
 
+::-moz-selection {
+  background-color: var(--accent);
+  color: #fff;
+  -moz-transition: background-color 0.3s ease-out;
+  transition: background-color 0.3s ease-out;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 ::selection {
   background-color: var(--accent);
   color: #fff;
+  -webkit-transition: background-color 0.3s ease-out;
   transition: background-color 0.3s ease-out;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
@@ -56,10 +65,27 @@ select:focus,
 select:hover,
 option:hover,
 option:focus {
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
     border: none;
     outline: none;
     border: transparent;
+}
+
+::-webkit-input-placeholder {
+    opacity: 1;
+}
+
+::-moz-placeholder {
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    opacity: 1;
+}
+
+::-ms-input-placeholder {
+    opacity: 1;
 }
 
 ::placeholder {
@@ -76,7 +102,10 @@ button[disabled] {
 }
 
 label, a {
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 button:focus,
@@ -89,7 +118,8 @@ textarea:focus {
 
 input:focus,
 textarea:focus {
-    box-shadow: 0 0 3px #053240;
+    -webkit-box-shadow: 0 0 3px #053240;
+            box-shadow: 0 0 3px #053240;
 }
 
 body {
@@ -118,7 +148,8 @@ body select:focus {
 
 body input:invalid:focus,
 body select:invalid:focus {
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
     border-color: var(--accent);
 }
 
@@ -172,6 +203,7 @@ b, strong {
 }
 
 a {
+    -webkit-transition: .2s linear all;
     transition: .2s linear all;
 }
 

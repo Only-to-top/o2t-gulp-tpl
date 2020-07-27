@@ -76,12 +76,18 @@ jQuery(function ($) {
                 992: { slidesPerView: 3 },
                 1200: { slidesPerView: 4 }
             },
-        });
+            on: {
+                init() {
+                    this.el.addEventListener('mouseenter', () => {
+                        this.autoplay.stop();
+                    });
 
-        // stop autoplay swiper on hover
-        $(".swiper-container--1x").hover(function () {
-            (this).swiper.autoplay.stop();
-        }, function () { (this).swiper.autoplay.start(); });
+                    this.el.addEventListener('mouseleave', () => {
+                        this.autoplay.start();
+                    });
+                }
+            },
+        });
 
     };// /swiper slider
 

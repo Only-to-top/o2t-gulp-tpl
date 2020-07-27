@@ -1,18 +1,16 @@
 `use strict`;
 
 const { src, dest, parallel, series, watch } = require('gulp');
-const sass = require('gulp-sass');
+
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');            // объединение файлов
 const cleancss = require('gulp-clean-css');       // минификация css файлов
 const rename = require('gulp-rename');
-const autoprefixer = require('gulp-autoprefixer');
-const sourcemaps = require('gulp-sourcemaps');
 const terser = require('gulp-terser');            // для сжатия JS + es2015
-const notify = require('gulp-notify');            // уведомления
 const del = require('del');                       // удаление папок и файлов
-const newer = require('gulp-newer');
-const imagemin = require('gulp-imagemin');
 
 
 function css() {
@@ -31,27 +29,12 @@ function css() {
 
 
 function styles() {
-    return src('app/assets/sass/**/*.sass')
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }).on('eror', notify.onError)) // плагин уведомления об ошибках
-        .pipe(autoprefixer())
-        .pipe(sourcemaps.write('.'))
-        .pipe(dest('./app/assets/css/'))
-        .pipe(browserSync.stream())
-};
-
-
-// without sourcemaps
-function SASSProduction() {
-    return src('app/assets/sass/**/*.sass')
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }).on('eror', notify.onError)) // плагин уведомления об ошибках
-        .pipe(autoprefixer())
-        .pipe(dest('./app/assets/css/'))
-        .pipe(browserSync.stream())
+    return src('app/assets/css/**.css')
+        .pipe(postcss([
+            autoprefixer()
+        ]))
+        .pipe(dest('app/assets/styles'))
+        .pipe(browserSync.stream());
 };
 
 
@@ -80,6 +63,7 @@ async function prebuild() { // перенос контента в продакш
     ], { base: 'app' })
 };
 
+
 // Удаление папки «dist»
 function clean() {
     return del('dist/'); // Удаляем папку dist перед сборкой
@@ -98,10 +82,10 @@ function server() {
 
 // Слежение за файлами
 function watching() {
-    watch('app/assets/sass/**/*.sass', styles);                              // следим за sass
-    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], scripts);  // следим за js
-    watch(['app/**/*.{html,php,json}']).on('change', browserSync.reload);
-    watch('app/assets/img/**/*');
+    watch(['app/assets/css/**/*.css', '!app/assets/css/*.min.css'], {usePolling: true}, series(styles));
+    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], {usePolling: true}, scripts);  // следим за js
+    watch(['app/**/*.{html,php,json}'], {usePolling: true} ).on('change', browserSync.reload);
+    watch('app/assets/img/**/*'), {usePolling: true};
 }
 
 
@@ -110,7 +94,6 @@ function watching() {
 exports.scripts = scripts;
 exports.css = css;
 exports.styles = styles;
-exports.SASSProduction = SASSProduction;
 exports.clean = clean;
 exports.prebuild = prebuild;
 
@@ -118,4 +101,4 @@ exports.prebuild = prebuild;
 exports.default = parallel(css, styles, scripts, server, watching);
 
 // Выгрузка в продакшен
-exports.build = series(clean, parallel(SASSProduction, scripts), prebuild);
+exports.build = series(clean, scripts, prebuild);
