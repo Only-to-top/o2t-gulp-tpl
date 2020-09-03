@@ -185,3 +185,7 @@ a:hover {
     padding: 12px 35px;
     text-align: center;
 }
+
+/* centerer items */
+/* display: grid; */
+/* place-items: center; */
