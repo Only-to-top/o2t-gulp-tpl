@@ -17,13 +17,14 @@ function css() {
     return src([
         'app/assets/libs/bootstrap-reboot-4.4.1.min.css',
         // 'app/assets/libs/font-awesome-pro-all.min.css',
-        'app/assets/libs/swiper-5.4.2/swiper.min.css',
+        // 'app/assets/libs/swiper-5.4.2/swiper.min.css',
+        'app/assets/libs/swiper-6.2.0/swiper-bundle_6_2_0.min.css',
         'app/assets/libs/fancybox/jquery.fancybox.min.css',
     ])
         .pipe(concat('libs.css'))
         .pipe(cleancss())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(dest('app/assets/css/'))
+        .pipe(dest('app/assets/styles/'))
         .pipe(browserSync.stream());
 };
 
@@ -40,11 +41,10 @@ function styles() {
 
 function scripts() {
     return src([
-        // 'app/assets/libs/jquery-3.5.0.min.js',
-        // 'app/assets/libs/swiper-5.4.2/swiper.min.js',
+        // 'app/assets/libs/jquery-3.5.1.min.js',
+        // 'app/assets/libs/swiper-6.2.0/swiper-bundle_6_2_0.min.js',
         'app/assets/libs/sweetalert/sweetalert.min.js',
         'app/assets/libs/fancybox/jquery.fancybox.min.js',
-        // 'app/assets/libs/jquery.mask.min.js',
     ])
         .pipe(concat('libs.min.js'))
         .pipe(terser())

@@ -4,8 +4,7 @@
     --text: #000;
 }
 
-.container,
-.container-fluid {
+.container, .container-fluid {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -61,10 +60,7 @@
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-select:focus,
-select:hover,
-option:hover,
-option:focus {
+select:focus, select:hover, option:hover, option:focus {
     -webkit-box-shadow: none;
             box-shadow: none;
     border: none;
@@ -96,8 +92,7 @@ button {
     border: none;
 }
 
-select[disabled],
-button[disabled] {
+select[disabled], button[disabled] {
   cursor: not-allowed;
 }
 
@@ -108,16 +103,11 @@ label, a {
             user-select: none;
 }
 
-button:focus,
-a:focus,
-* [role="button"]:focus,
-input:focus,
-textarea:focus {
+button:focus, a:focus, * [role="button"]:focus, input:focus, textarea:focus {
   outline: none !important;
 }
 
-input:focus,
-textarea:focus {
+input:focus, textarea:focus {
     -webkit-box-shadow: 0 0 3px #053240;
             box-shadow: 0 0 3px #053240;
 }
@@ -136,18 +126,15 @@ body {
   overflow-x: hidden;
 }
 
-body input,
-body select {
+body input, body select {
   color: var(--text);
 }
 
-body input:focus,
-body select:focus {
+body input:focus, body select:focus {
   border-color: var(--text);
 }
 
-body input:invalid:focus,
-body select:invalid:focus {
+body input:invalid:focus, body select:invalid:focus {
     -webkit-box-shadow: none;
             box-shadow: none;
     border-color: var(--accent);
@@ -157,8 +144,7 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-input[type="number"]:focus,
-input[type="number"]:hover {
+input[type="number"]:focus, input[type="number"]:hover {
     -moz-appearance: number-input;
 }
 
@@ -217,3 +203,7 @@ a:hover {
     padding: 12px 35px;
     text-align: center;
 }
+
+/* centerer items */
+/* display: grid; */
+/* place-items: center; */
