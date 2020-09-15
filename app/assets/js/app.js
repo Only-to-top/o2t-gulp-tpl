@@ -95,32 +95,6 @@ jQuery(function ($) {
     };// /swiper slider
 
 
-    // scroll to top
-    $("#element, #element2").on("click", "a", function (event) {
-        event.preventDefault();
-        let id = $(this).attr('href'), top = $(id).offset().top;
-        $('body, html').animate({ scrollTop: top }, 1500);
-    });
-
-
-    // $('input[type="tel"]').mask('+7 (000) 000-00-00',
-        // { placeholder: "+7 (___) ___-__-__" }
-    // );
-
-
-    // equal heights
-    let maxHeightEl = 0;
-    const itemNameEQH = $('el');
-    const equalHeightFunction = () => {
-        itemNameEQH.each(function () {
-            if ($(this).height() > maxHeightEl) { maxHeightEl = $(this).height(); }
-        });
-        itemNameEQH.height(maxHeightEl);
-    }
-    equalHeightFunction();
-    $(window).resize(equalHeightFunction());
-
-
     // tabs
     $('.tab').on('click', function () {
         let dataTarget = $(this).attr('data-target');
@@ -131,28 +105,6 @@ jQuery(function ($) {
         $('.tab-content').removeClass('active');
         $('.tab-content--' + dataTarget).addClass('active');
     });
-
-
-    // scrolling function
-    $(window).scroll(function () {
-
-        const menuHeight = $('.contacts-line').outerHeight();
-        const menu = $('.menu-header');
-
-        window.addEventListener("orientationchange", function () {
-            menu = $('.menu-header').outerHeight();
-        }, false);
-
-        if ($(window).scrollTop() > menuHeight) {
-            menu.parent().height(menu.outerHeight());
-            menu.addClass('fixed');
-        } else {
-            menu.removeClass('fixed');
-            menu.parent().height('auto');
-        }
-
-    });
-
 
 });
 
