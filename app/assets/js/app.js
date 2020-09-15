@@ -10,13 +10,16 @@ jQuery(function ($) {
         if (e.target.className === 'hamburger') {
             hamburger.addClass('is-active');
             menu.stop().slideDown();
+            $('body').css('overflow', 'hidden');
         } else if (e.target.className === 'hamburger is-active') {
             hamburger.removeClass('is-active');
             menu.stop().slideUp();
+            $('body').css('overflow', 'auto');
         } else if ((menu.has(e.target).length === 0) && (hamburger.has(e.target).length === 0)) {
             if ($(window).width() < 768) {
                 hamburger.removeClass('is-active');
                 menu.stop().slideUp();
+                $('body').css('overflow', 'auto');
             }
         }
     });
