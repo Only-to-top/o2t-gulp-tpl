@@ -17,12 +17,6 @@
   font-size: 27px;
 }
 
-:root {
-  --ff: 'Montserrat', sans-serif;
-  --accent: #FFD600;
-  --text: #000;
-}
-
 .fancybox-bg {
   background: rgba(0, 0, 0, 0.8);
 }
