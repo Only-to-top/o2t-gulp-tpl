@@ -64,6 +64,7 @@ select:focus, select:hover, option:hover, option:focus {
 
 button {
     border: none;
+    transition: 0.2s linear all;
 }
 
 select[disabled], button[disabled] {
