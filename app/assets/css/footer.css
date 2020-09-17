@@ -1,3 +1,5 @@
+/* Swiper Slider */
+
 .swiper-container__wrapper {
   position: relative;
 }
@@ -16,6 +18,8 @@
 .swiper-button-prev::after {
   font-size: 27px;
 }
+
+/* Fancybox */
 
 .fancybox-bg {
   background: rgba(0, 0, 0, 0.8);
@@ -70,6 +74,8 @@ body.compensate-for-scrollbar {
   }
 }
 
+/* Hamburger button menu */
+
 .hamburger {
   position: relative;
   display: block;
@@ -116,5 +122,3 @@ body.compensate-for-scrollbar {
   -webkit-transform: translate(-50%, -50%) rotate(-45deg);
           transform: translate(-50%, -50%) rotate(-45deg);
 }
-
-/*# sourceMappingURL=footer.css.map */
