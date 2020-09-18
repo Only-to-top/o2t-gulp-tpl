@@ -106,12 +106,15 @@ body input:invalid:focus, body select:invalid:focus {
     border-color: var(--accent);
 }
 
+/* firefox hide arrows */
 input[type="number"] {
     -moz-appearance: textfield;
 }
 
-input[type="number"]:focus, input[type="number"]:hover {
-    -moz-appearance: number-input;
+/* webkit hide arrows */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 textarea {
