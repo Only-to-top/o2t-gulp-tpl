@@ -97,7 +97,7 @@ body input, body select {
   color: var(--text);
 }
 
-body input:focus, body textarea:focus, body select:focus {
+body input:focus, body input:hover, body textarea:focus, body textarea:hover, body select:focus {
   border-color: rgba(59, 50, 95, 0.3);
 }
 
