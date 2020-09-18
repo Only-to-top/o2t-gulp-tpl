@@ -79,10 +79,6 @@ button:focus, a:focus, * [role="button"]:focus, input:focus, textarea:focus {
   outline: none !important;
 }
 
-input:focus, textarea:focus {
-    box-shadow: 0 0 3px #053240;
-}
-
 body {
   font-family: var(--ff);
   color: var(--text);
@@ -101,8 +97,8 @@ body input, body select {
   color: var(--text);
 }
 
-body input:focus, body select:focus {
-  border-color: var(--text);
+body input:focus, body textarea:focus, body select:focus {
+  border-color: rgba(59, 50, 95, 0.3);
 }
 
 body input:invalid:focus, body select:invalid:focus {
