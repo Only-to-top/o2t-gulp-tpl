@@ -94,18 +94,25 @@ jQuery(function ($) {
 
     };// /swiper slider
 
+});
 
-    // tabs
-    $('.tab').on('click', function () {
-        let dataTarget = $(this).attr('data-target');
+// tabs
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.radio__input');
+    const tabs_content = document.querySelectorAll('.pharmacyes');
 
-        $('.tab').removeClass('active');
-        $(this).addClass('active');
+    tabs.forEach(el => {
+        el.addEventListener('click', function() {
+            let target = this.getAttribute('data-target');
 
-        $('.tab-content').removeClass('active');
-        $('.tab-content--' + dataTarget).addClass('active');
+            tabs_content.forEach(item => {
+                item.classList.remove('show');
+            });
+
+            this.classList.add('active');
+            document.querySelector('.pharmacyes--' + target).classList.add('show');
+        });
     });
-
 });
 
 
