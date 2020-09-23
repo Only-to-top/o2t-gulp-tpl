@@ -16,7 +16,7 @@ jQuery(function ($) {
             menu.stop().slideUp();
             $('body').css('overflow', 'visible');
         } else if ((menu.has(e.target).length === 0) && (hamburger.has(e.target).length === 0)) {
-            if ($(window).width() < 768) {
+            if (document.documentElement.clientWidth < 768) {
                 hamburger.removeClass('is-active');
                 menu.stop().slideUp();
                 $('body').css('overflow', 'visible');
@@ -53,7 +53,7 @@ jQuery(function ($) {
 
 
     // hide block on click outside
-    if ($(window).width() < 768) {
+    if (document.documentElement.clientWidth < 768) {
         $(document).mouseup(function (e) {
             let container = $(".search--show");
             if (container.has(e.target).length === 0) {
