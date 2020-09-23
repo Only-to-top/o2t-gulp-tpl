@@ -53,14 +53,16 @@ jQuery(function ($) {
 
 
     // hide block on click outside
-    if (document.documentElement.clientWidth < 768) {
-        $(document).mouseup(function (e) {
-            let container = $(".search--show");
-            if (container.has(e.target).length === 0) {
-                container.fadeOut();
-            };
-        });
-    };
+    window.addEventListener("resize", () => {
+        if (document.documentElement.clientWidth < 768) {
+            $(document).mouseup(function (e) {
+                let container = $(".search--show");
+                if (container.has(e.target).length === 0) {
+                    container.fadeOut();
+                };
+            });
+        };
+    });
 
 
     // Swiper slider
