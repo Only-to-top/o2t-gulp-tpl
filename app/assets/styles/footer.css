@@ -1,3 +1,5 @@
+/* Swiper Slider */
+
 .swiper-container__wrapper {
   position: relative;
 }
@@ -17,11 +19,7 @@
   font-size: 27px;
 }
 
-:root {
-  --ff: 'Montserrat', sans-serif;
-  --accent: #FFD600;
-  --text: #000;
-}
+/* Fancybox */
 
 .fancybox-bg {
   background: rgba(0, 0, 0, 0.8);
@@ -75,6 +73,8 @@ body.compensate-for-scrollbar {
     padding: 20px;
   }
 }
+
+/* Hamburger button menu */
 
 .hamburger {
   position: relative;

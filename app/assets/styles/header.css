@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "Montserrat";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/MontserratRegular.woff2") format("woff2");
+}
+
 :root {
     --ff: 'Montserrat', sans-serif;
     --accent: #FFD600;
@@ -34,14 +42,6 @@
     .container {
         max-width: 1140px;
     }
-}
-
-@font-face {
-    font-family: "Montserrat";
-    font-display: swap;
-    font-style: normal;
-    font-weight: 400;
-    src: url("../fonts/MontserratRegular.woff2") format("woff2");
 }
 
 ::-moz-selection {
@@ -90,6 +90,8 @@ select:focus, select:hover, option:hover, option:focus {
 
 button {
     border: none;
+    -webkit-transition: 0.2s linear all;
+    transition: 0.2s linear all;
 }
 
 select[disabled], button[disabled] {
@@ -105,11 +107,6 @@ label, a {
 
 button:focus, a:focus, * [role="button"]:focus, input:focus, textarea:focus {
   outline: none !important;
-}
-
-input:focus, textarea:focus {
-    -webkit-box-shadow: 0 0 3px #053240;
-            box-shadow: 0 0 3px #053240;
 }
 
 body {
@@ -130,8 +127,8 @@ body input, body select {
   color: var(--text);
 }
 
-body input:focus, body select:focus {
-  border-color: var(--text);
+body input:focus, body input:hover, body textarea:focus, body textarea:hover, body select:focus {
+  border-color: rgba(59, 50, 95, 0.3);
 }
 
 body input:invalid:focus, body select:invalid:focus {
@@ -140,12 +137,15 @@ body input:invalid:focus, body select:invalid:focus {
     border-color: var(--accent);
 }
 
+/* firefox hide arrows */
 input[type="number"] {
     -moz-appearance: textfield;
 }
 
-input[type="number"]:focus, input[type="number"]:hover {
-    -moz-appearance: number-input;
+/* webkit hide arrows */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 textarea {

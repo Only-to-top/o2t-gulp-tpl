@@ -12,6 +12,12 @@ const rename = require('gulp-rename');
 const terser = require('gulp-terser');            // для сжатия JS + es2015
 const del = require('del');                       // удаление папок и файлов
 
+// SVG
+const cheerio = require('gulp-cheerio');
+const replace = require('gulp-replace');
+const svgSprite = require('gulp-svg-sprite');
+const svgMin = require('gulp-svgmin');
+
 
 function css() {
     return src([
@@ -80,12 +86,40 @@ function server() {
 };
 
 
+// svg
+function svg() {
+    return src('app/assets/img/svg/*.svg')
+        .pipe(svgMin({
+            js2svg: {
+                pretty: true
+            }
+        }))
+        // .pipe(cheerio({
+        //     run: function ($) {
+        //         $('[fill]').removeAttr('fill');
+        //         $('[stroke]').removeAttr('stroke');
+        //         $('[style]').removeAttr('style');
+        //     },
+        //     parserOptions: { xmlMode: true }
+        // }))
+        // .pipe(replace('&gt;', '>'))
+        .pipe(svgSprite({
+            mode: {
+                symbol: {
+                    sprite: "sprite.svg",
+                }
+            }
+        }))
+        .pipe(dest('app/assets/img/'));
+}
+
+
 // Слежение за файлами
 function watching() {
-    watch(['app/assets/css/**/*.css', '!app/assets/css/*.min.css'], {usePolling: true}, series(styles));
-    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], {usePolling: true}, scripts);  // следим за js
-    watch(['app/**/*.{html,php,json}'], {usePolling: true} ).on('change', browserSync.reload);
-    watch('app/assets/img/**/*'), {usePolling: true};
+    watch(['app/assets/css/**/*.css', '!app/assets/css/*.min.css'], { usePolling: true }, series(styles));
+    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], { usePolling: true }, scripts);  // следим за js
+    watch(['app/**/*.{html,php,json}'], { usePolling: true }).on('change', browserSync.reload);
+    watch('app/assets/img/**/*'), { usePolling: true };
 }
 
 
@@ -98,7 +132,7 @@ exports.clean = clean;
 exports.prebuild = prebuild;
 
 // Задачи по умолчанию
-exports.default = parallel(css, styles, scripts, server, watching);
+exports.default = parallel(css, styles, scripts, svg, server, watching);
 
 // Выгрузка в продакшен
 exports.build = series(clean, scripts, prebuild);
