@@ -107,9 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
         el.addEventListener('click', function() {
             let target = this.getAttribute('data-target');
 
-            tabs_content.forEach(item => {
-                item.classList.remove('show');
-            });
+            tabs.forEach(tab => tab.classList.remove('active') );
+            tabs_content.forEach(item => item.classList.remove('show') );
 
             this.classList.add('active');
             document.querySelector('.pharmacyes--' + target).classList.add('show');
