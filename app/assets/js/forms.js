@@ -2,16 +2,14 @@ const forms = () => {
 
     if (document.querySelector(".form")) {
 
-        // email ajax send forms
         const ajaxSend = async (url, formData) => {
-
-            // ждём ответ, только тогда наш код пойдёт дальше
-            let fetchResponse = await fetch(url, {
+            const fetchResponse = await fetch(url, {
                 method: 'POST',
                 body: formData
             });
-
-            // ждём окончания операции
+            if (!fetchResponse.ok) {
+                throw new Error(`Ошибка по адресу ${url}, статус ошибки ${fetchResponse.status}`);
+            }
             return await fetchResponse.text();
         }
 
@@ -21,15 +19,15 @@ const forms = () => {
                 const formData = new FormData(this);
 
                 ajaxSend('/mail.php', formData)
-                    .then(function (fetchResponse) {
-                        document.querySelector('.fancybox-close-small').click(); // close fancy popup
+                    .then(function (data) {
+                        // document.querySelector('.fancybox-close-small').click(); // close fancy popup
                         swal({
                             title: 'Спасибо!',
                             text: 'Данные отправлены.',
                             icon: 'success',
                             button: 'Ok'
                         });
-                        console.log(fetchResponse);
+                        el.reset();
                     }).catch(function (error) {
                         swal({
                             title: error,
@@ -37,8 +35,6 @@ const forms = () => {
                             button: 'Ok'
                         });
                     });
-
-                // this.reset();
             });
         });
 

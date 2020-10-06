@@ -1,124 +1,132 @@
 /* Swiper Slider */
 
 .swiper-container__wrapper {
-  position: relative;
+    position: relative;
 }
 
 .swiper-container {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  color: var(--accent);
+.swiper-button-next, .swiper-button-prev {
+    color: var(--accent);
 }
 
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 27px;
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 27px;
 }
 
 /* Fancybox */
 
 .fancybox-bg {
-  background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .fancybox-content {
-  overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 .fancybox-slide {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .fancybox-slide--html .fancybox-close-small {
-  color: #222;
-  font-size: 30px;
-  padding: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: center;
-  font-family: 'Arial', sans-serif;
+    color: #222;
+    font-size: 30px;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
 }
 
 .fancybox-lock {
-  overflow: hidden;
-  margin-right: 0 !important;
+    overflow: hidden;
+    margin-right: 0 !important;
 }
 
 .fancybox-lock .fancybox-overlay {
-  overflow: hidden;
-  overflow-y: hidden;
+    overflow: hidden;
+    overflow-y: hidden;
 }
 
 body.compensate-for-scrollbar {
-  overflow-y: auto;
+    overflow-y: auto;
 }
 
 .compensate-for-scrollbar {
-  margin-right: 0 !important;
+    margin-right: 0 !important;
 }
 
 @media screen and (max-width: 768px) {
-  .fancybox-slide--html {
-    padding: 20px;
-  }
+    .fancybox-slide--html {
+        padding: 20px;
+    }
 }
 
 /* Hamburger button menu */
 
 .hamburger {
-  position: relative;
-  display: block;
-  width: 30px;
-  height: 26px;
-  background: transparent;
-  border: none;
-  border-top: 4px solid #222;
-  border-bottom: 4px solid #222;
-  color: #222;
-  font-size: 0;
-  -webkit-transition: 0.25s ease-in-out;
-  transition: 0.25s ease-in-out;
-  outline: none;
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 26px;
+    background: transparent;
+    border: none;
+    border-top: 4px solid #222;
+    border-bottom: 4px solid #222;
+    color: #222;
+    font-size: 0;
+    -webkit-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+    outline: none;
 }
 
 .hamburger::before, .hamburger::after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 4px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: currentColor;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-transition: -webkit-transform 0.25s ease-in-out;
-  transition: -webkit-transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: currentColor;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -webkit-transition: -webkit-transform 0.25s ease-in-out;
+    transition: -webkit-transform 0.25s ease-in-out;
+    transition: transform 0.25s ease-in-out;
+    transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
 }
 
 .hamburger.is-active {
-  border-color: transparent;
+    border-color: transparent;
 }
 
 .hamburger.is-active::before {
-  -webkit-transform: translate(-50%, -50%) rotate(45deg);
-          transform: translate(-50%, -50%) rotate(45deg);
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .hamburger.is-active::after {
-  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
-          transform: translate(-50%, -50%) rotate(-45deg);
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+            transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* swal */
+
+.swal-button, .swal-button:not([disabled]):hover {
+    background-color: var(--accent);
+}
+
+.swal-button:not([disabled]):hover {
+    opacity: 0.8;
 }
