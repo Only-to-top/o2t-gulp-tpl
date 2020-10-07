@@ -128,6 +128,7 @@ function watching() {
 exports.scripts = scripts;
 exports.css = css;
 exports.styles = styles;
+exports.svg = svg;
 exports.clean = clean;
 exports.prebuild = prebuild;
 
