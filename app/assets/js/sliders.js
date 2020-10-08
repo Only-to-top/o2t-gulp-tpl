@@ -7,6 +7,7 @@ const sliders = () => {
             autoplay: { delay: 6500, disableOnInteraction: false, },
             spaceBetween: 20,
             grabCursor: true,
+            allowTouchMove: true, // touch листание
             loop: true,
             breakpoints: { // mobile first
                 0: { slidesPerView: 1 },
