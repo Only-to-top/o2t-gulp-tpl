@@ -164,8 +164,8 @@ b, strong {
     display: none;
 }
 
-a {
-    transition: .2s linear all;
+a, input {
+    transition: 0.2s linear all;
 }
 
 a:hover {
