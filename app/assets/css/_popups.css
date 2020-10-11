@@ -1,0 +1,50 @@
+/* Popups */
+
+.fancybox-bg {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.fancybox-content {
+    overflow-x: hidden;
+}
+
+.fancybox-slide {
+    overflow: hidden;
+}
+
+.fancybox-slide--html .fancybox-close-small {
+    color: #222;
+    font-size: 30px;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.fancybox-lock {
+    overflow: hidden;
+    margin-right: 0 !important;
+}
+
+.fancybox-lock .fancybox-overlay {
+    overflow: hidden;
+    overflow-y: hidden;
+}
+
+body.compensate-for-scrollbar {
+    overflow-y: auto;
+}
+
+.compensate-for-scrollbar {
+    margin-right: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+    .fancybox-slide--html {
+        padding: 20px;
+    }
+}

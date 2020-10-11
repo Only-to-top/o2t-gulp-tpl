@@ -17,7 +17,7 @@
     font-size: 27px;
 }
 
-/* Fancybox */
+/* Popups */
 
 .fancybox-bg {
     background: rgba(0, 0, 0, 0.8);
@@ -121,7 +121,7 @@ body.compensate-for-scrollbar {
             transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-/* swal */
+/* Swal */
 
 .swal-button, .swal-button:not([disabled]):hover {
     background-color: var(--accent);
@@ -130,3 +130,5 @@ body.compensate-for-scrollbar {
 .swal-button:not([disabled]):hover {
     opacity: 0.8;
 }
+
+/* footer */

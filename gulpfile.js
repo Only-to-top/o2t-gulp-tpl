@@ -3,6 +3,7 @@
 const { src, dest, parallel, series, watch } = require('gulp');
 
 const postcss = require('gulp-postcss');
+const importCSS = require("postcss-import");
 const autoprefixer = require('autoprefixer');
 
 const browserSync = require('browser-sync').create();
@@ -22,8 +23,6 @@ const svgMin = require('gulp-svgmin');
 function css() {
     return src([
         'app/assets/libs/bootstrap-reboot-4.4.1.min.css',
-        // 'app/assets/libs/font-awesome-pro-all.min.css',
-        // 'app/assets/libs/swiper-5.4.2/swiper.min.css',
         'app/assets/libs/swiper-6.2.0/swiper-bundle_6_2_0.min.css',
         'app/assets/libs/fancybox/jquery.fancybox.min.css',
     ])
@@ -36,9 +35,13 @@ function css() {
 
 
 function styles() {
-    return src('app/assets/css/**.css')
+    return src([
+        'app/assets/css/**.css',
+        '!app/assets/css/_*.css'
+    ])
         .pipe(postcss([
-            autoprefixer()
+            importCSS,
+            autoprefixer
         ]))
         .pipe(dest('app/assets/styles'))
         .pipe(browserSync.stream());

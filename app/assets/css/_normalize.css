@@ -44,44 +44,18 @@
     }
 }
 
-::-moz-selection {
-    background-color: var(--accent);
-    color: #fff;
-    -moz-transition: background-color 0.3s ease-out;
-    transition: background-color 0.3s ease-out;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
 ::selection {
     background-color: var(--accent);
     color: #fff;
-    -webkit-transition: background-color 0.3s ease-out;
     transition: background-color 0.3s ease-out;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 select:focus, select:hover, option:hover, option:focus {
-    -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
     border: none;
     outline: none;
     border: transparent;
-}
-
-::-webkit-input-placeholder {
-    opacity: 1;
-}
-
-::-moz-placeholder {
-    opacity: 1;
-}
-
-:-ms-input-placeholder {
-    opacity: 1;
-}
-
-::-ms-input-placeholder {
-    opacity: 1;
 }
 
 ::placeholder {
@@ -90,7 +64,6 @@ select:focus, select:hover, option:hover, option:focus {
 
 button {
     border: none;
-    -webkit-transition: 0.2s linear all;
     transition: 0.2s linear all;
 }
 
@@ -99,10 +72,7 @@ select[disabled], button[disabled] {
 }
 
 label, a {
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    user-select: none;
 }
 
 button:focus, a:focus, * [role="button"]:focus, input:focus, textarea:focus {
@@ -132,8 +102,7 @@ body input:focus, body input:hover, body textarea:focus, body textarea:hover, bo
 }
 
 body input:invalid:focus, body select:invalid:focus {
-    -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
     border-color: var(--accent);
 }
 
@@ -173,8 +142,7 @@ ul, ol {
     width: 100%;
     height: 100%;
     max-width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
 }
 
 .tal {
@@ -198,7 +166,6 @@ b, strong {
 }
 
 a, input {
-    -webkit-transition: 0.2s linear all;
     transition: 0.2s linear all;
 }
 
@@ -214,5 +181,3 @@ a:hover {
     display: inline-grid;
     place-items: center;
 }
-
-/* header */

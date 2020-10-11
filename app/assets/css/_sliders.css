@@ -1,0 +1,18 @@
+/* Swiper Slider */
+
+.swiper-container__wrapper {
+    position: relative;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: var(--accent);
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 27px;
+}
