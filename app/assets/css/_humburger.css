@@ -4,22 +4,40 @@
     position: relative;
     display: block;
     width: 30px;
-    height: 26px;
+    height: 24px;
     background: transparent;
     border: none;
-    border-top: 4px solid #222;
-    border-bottom: 4px solid #222;
-    color: #222;
-    font-size: 0;
     transition: 0.25s ease-in-out;
     outline: none;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    right: 0;
+    height: 2px;
+    background-color: currentColor;
+}
+
+.hamburger span:nth-child(1) {
+    width: 24px;
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    width: 20px;
+    bottom: 0;
+}
+
+.is-active span {
+    display: none;
 }
 
 .hamburger::before, .hamburger::after {
     content: '';
     display: block;
     width: 100%;
-    height: 4px;
+    height: 2px;
     position: absolute;
     top: 50%;
     left: 50%;
