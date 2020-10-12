@@ -11,6 +11,12 @@
     outline: none;
 }
 
+@media only screen and (min-width: 992.1px) {
+    .hamburger {
+        display: none;
+    }
+}
+
 .hamburger span {
     display: block;
     position: absolute;
