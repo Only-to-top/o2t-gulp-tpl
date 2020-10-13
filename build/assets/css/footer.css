@@ -35,15 +35,9 @@
     color: #222;
     font-size: 30px;
     padding: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-family: 'Arial', sans-serif;
 }
@@ -78,33 +72,52 @@ body.compensate-for-scrollbar {
     position: relative;
     display: block;
     width: 30px;
-    height: 26px;
+    height: 24px;
     background: transparent;
     border: none;
-    border-top: 4px solid #222;
-    border-bottom: 4px solid #222;
-    color: #222;
-    font-size: 0;
-    -webkit-transition: 0.25s ease-in-out;
     transition: 0.25s ease-in-out;
     outline: none;
+}
+
+@media only screen and (min-width: 992.1px) {
+    .hamburger {
+        display: none;
+    }
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    right: 0;
+    height: 2px;
+    background-color: currentColor;
+}
+
+.hamburger span:nth-child(1) {
+    width: 24px;
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    width: 20px;
+    bottom: 0;
+}
+
+.is-active span {
+    display: none;
 }
 
 .hamburger::before, .hamburger::after {
     content: '';
     display: block;
     width: 100%;
-    height: 4px;
+    height: 2px;
     position: absolute;
     top: 50%;
     left: 50%;
     background: currentColor;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    -webkit-transition: -webkit-transform 0.25s ease-in-out;
-    transition: -webkit-transform 0.25s ease-in-out;
+    transform: translate(-50%, -50%);
     transition: transform 0.25s ease-in-out;
-    transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
 }
 
 .hamburger.is-active {
@@ -112,13 +125,11 @@ body.compensate-for-scrollbar {
 }
 
 .hamburger.is-active::before {
-    -webkit-transform: translate(-50%, -50%) rotate(45deg);
-            transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .hamburger.is-active::after {
-    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
-            transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* Swal */

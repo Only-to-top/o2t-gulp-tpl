@@ -1,4 +1,4 @@
-`use strict`;
+'use strict';
 
 const { src, dest, parallel, series, watch } = require('gulp');
 
@@ -7,30 +7,37 @@ const importCSS = require("postcss-import");
 const autoprefixer = require('autoprefixer');
 
 const browserSync = require('browser-sync').create();
-const concat = require('gulp-concat');            // объединение файлов
-const cleancss = require('gulp-clean-css');       // минификация css файлов
+const concat = require('gulp-concat');                  // объединение файлов
+const cleancss = require('gulp-clean-css');             // минификация css файлов
 const rename = require('gulp-rename');
-const terser = require('gulp-terser');            // для сжатия JS + es2015
-const del = require('del');                       // удаление папок и файлов
+const terser = require('gulp-terser');                  // для сжатия JS + es2015
+const del = require('del');                             // удаление папок и файлов
 
-// SVG
-const cheerio = require('gulp-cheerio');
-const replace = require('gulp-replace');
-const svgSprite = require('gulp-svg-sprite');
-const svgMin = require('gulp-svgmin');
+const fileInclude = require('gulp-file-include');
 
-const include = require('gulp-file-include');
+const imagemin = require('gulp-imagemin');
+
+
+// Сервер
+function server() {
+    browserSync.init({
+        server: { baseDir: 'build/' },
+        // proxy: "http://only-to-top.loc/", // + указываем домен + папку домена
+        notify: false,
+        online: 'online'
+    });
+}
+
 
 function html() {
-    gulp.src(['app/_includes/*.html'])
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: '@file'
-        }))
-        .pipe(gulp.dest('app'));
-};
+    return src(['app/**/*.html'])
+        .pipe(fileInclude())
+        .pipe(dest('build/'))
+        .pipe(browserSync.stream());
+}
 
-function css() {
+
+function libs_css() {
     return src([
         'app/assets/libs/bootstrap-reboot-4.4.1.min.css',
         'app/assets/libs/swiper-6.2.0/swiper-bundle_6_2_0.min.css',
@@ -39,9 +46,9 @@ function css() {
         .pipe(concat('libs.css'))
         .pipe(cleancss())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(dest('app/assets/styles/'))
+        .pipe(dest('build/assets/css/'))
         .pipe(browserSync.stream());
-};
+}
 
 
 function styles() {
@@ -53,9 +60,9 @@ function styles() {
             importCSS,
             autoprefixer
         ]))
-        .pipe(dest('app/assets/styles'))
+        .pipe(dest('build/assets/css'))
         .pipe(browserSync.stream());
-};
+}
 
 
 function scripts() {
@@ -67,86 +74,55 @@ function scripts() {
     ])
         .pipe(concat('libs.min.js'))
         .pipe(terser())
-        .pipe(dest('app/assets/js/'))
+        .pipe(dest('build/assets/js/'))
         .pipe(browserSync.stream());
-};
+}
 
 
-async function prebuild() { // перенос контента в продакшен
-    src([
-        './app/assets/css/*.css',
-        './app/assets/fonts/**/*',
-        './app/assets/img/**/*',
-        './app/assets/js/*.js',
-        ['./app/*.*', './app/.htaccess'],
-    ], { base: 'app' })
-};
-
-
-// Удаление папки «dist»
-function clean() {
-    return del('dist/'); // Удаляем папку dist перед сборкой
-};
-
-
-// Сервер
-function server() {
-    browserSync.init({
-        server: { baseDir: './app/' },
-        // proxy: "http://only-to-top.loc/", // + указываем домен + папку домена
-        notify: false
-    });
-};
-
-
-// svg
-function svg() {
-    return src('app/assets/img/svg/*.svg')
-        .pipe(svgMin({
-            js2svg: {
-                pretty: true
-            }
+function images() {
+    return src(['app/assets/img/**/*'])
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{ removeViewBox: false }],
+            interlaced: true,
+            optimizationLevel: 0 // 0 to 7
         }))
-        // .pipe(cheerio({
-        //     run: function ($) {
-        //         $('[fill]').removeAttr('fill');
-        //         $('[stroke]').removeAttr('stroke');
-        //         $('[style]').removeAttr('style');
-        //     },
-        //     parserOptions: { xmlMode: true }
-        // }))
-        // .pipe(replace('&gt;', '>'))
-        .pipe(svgSprite({
-            mode: {
-                symbol: {
-                    sprite: "sprite.svg",
-                }
-            }
-        }))
-        .pipe(dest('app/assets/img/'));
+        .pipe(dest('build/assets/img/'))
+        .pipe(browserSync.stream());
+}
+
+
+function fonts() {
+    return src(['app/assets/fonts/**/*'])
+        .pipe(dest('build/assets/fonts/'))
+        .pipe(browserSync.stream());
+}
+
+
+function clean() { // Удаление папки «build»
+    return del('build/');
 }
 
 
 // Слежение за файлами
 function watching() {
-    watch(['app/assets/css/**/*.css', '!app/assets/css/*.min.css'], { usePolling: true }, series(styles));
-    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], { usePolling: true }, scripts);  // следим за js
-    watch(['app/**/*.{html,php,json}'], { usePolling: true }).on('change', browserSync.reload);
-    watch('app/assets/img/**/*'), { usePolling: true };
+    watch(['app/**/*.{html,php}'], { usePolling: true }, html);
+    watch(['app/assets/css/**/*.css', '!app/assets/css/*.min.css'], { usePolling: true }, styles);
+    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], { usePolling: true }, scripts);
+    watch('app/assets/img/**/*'), { usePolling: true }, images;
+    watch('app/assets/fonts/**/*'), { usePolling: true }, fonts;
+    // watch(['app/**/*.{html,php}'], { usePolling: true }).on('change', browserSync.reload);
 }
 
 
-
-// exports.webpackJs = webpackJs;
-exports.scripts = scripts;
-exports.css = css;
+exports.html = html;
+exports.libs_css = libs_css;
 exports.styles = styles;
-exports.svg = svg;
+exports.scripts = scripts;
+exports.images = images;
+exports.fonts = fonts;
+
 exports.clean = clean;
-exports.prebuild = prebuild;
 
 // Задачи по умолчанию
-exports.default = parallel(css, styles, scripts, svg, server, watching);
-
-// Выгрузка в продакшен
-exports.build = series(clean, scripts, prebuild);
+exports.default = parallel(html, libs_css, styles, scripts, images, fonts, server, watching);

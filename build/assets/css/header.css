@@ -55,14 +55,12 @@
 ::selection {
     background-color: var(--accent);
     color: #fff;
-    -webkit-transition: background-color 0.3s ease-out;
     transition: background-color 0.3s ease-out;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 select:focus, select:hover, option:hover, option:focus {
-    -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
     border: none;
     outline: none;
     border: transparent;
@@ -80,17 +78,12 @@ select:focus, select:hover, option:hover, option:focus {
     opacity: 1;
 }
 
-::-ms-input-placeholder {
-    opacity: 1;
-}
-
 ::placeholder {
     opacity: 1;
 }
 
 button {
     border: none;
-    -webkit-transition: 0.2s linear all;
     transition: 0.2s linear all;
 }
 
@@ -132,8 +125,7 @@ body input:focus, body input:hover, body textarea:focus, body textarea:hover, bo
 }
 
 body input:invalid:focus, body select:invalid:focus {
-    -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
     border-color: var(--accent);
 }
 
@@ -198,7 +190,6 @@ b, strong {
 }
 
 a, input {
-    -webkit-transition: 0.2s linear all;
     transition: 0.2s linear all;
 }
 
@@ -216,3 +207,7 @@ a:hover {
 }
 
 /* header */
+
+body {
+    font-size: 10px;
+}

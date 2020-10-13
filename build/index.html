@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>SiteName</title>
+    <meta name="description" content="Описание">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="icon" href="./assets/img/favicon.ico">
+
+    <meta name="theme-color" content="#812b90">
+    <meta name="msapplication-navbutton-color" content="#812b90">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#812b90">
+
+    <link rel="stylesheet" href="./assets/css/libs.min.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/home.css">
+
+    <script src="./assets/js/swiper-bundle-6_2_0.min.js"></script>
+</head>
+
+<body>
+
+    home page
+
+<footer class="footer">
+
+</footer>
+
+<div class="container">
+    <button class="hamburger">
+        <span></span>
+        <span></span>
+    </button>
+</div>
+
+<a data-src="#popupForm" data-fancybox data-type="inline" class="btn btn-accent" href="javascript:void(0);" hidden>
+    Оставить заявку
+</a>
+
+<div class="swiper-container__wrapper" hidden>
+    <div class="swiper-container swiper-container--1x">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+        </div>
+    </div>
+    <div class="swiper-pagination swiper-pagination--1x"></div>
+    <div class="swiper-buttons">
+        <div class="swiper-button-prev swiper-button-prev--1x"></div>
+        <div class="swiper-button-next swiper-button-next--1x"></div>
+    </div>
+</div><!-- / slider -->
+
+
+
+<form class="popup" id="popupForm">
+
+    <div class="form__title">Оставьте заявку и мы вам перезвоним</div>
+    <input type="text" inputmode="text" name="Имя" placeholder="Имя">
+    <input type="tel" inputmode="tel" name="Телефон" placeholder="Телефон">
+    <input type="email" inputmode="email" name="E-mail" placeholder="E-mail*" required>
+    <textarea name="Собщение" placeholder="Собщение"></textarea>
+
+    <button type="submit" class="btn">Отправить</button>
+
+    <input type="hidden" name="admin_email" value="rlytrue@gmail.com">
+    <!-- <input type="hidden" name="project_name" value="<?php /* bloginfo('name'); */ ?>"> -->
+    <!-- <input type="hidden" name="admin_email" value="<?php /* bloginfo('admin_email'); */ ?>"> -->
+    <!-- <input type="hidden" name="form_subject" value="Форма со страницы <?php /* echo 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; */ ?>"> -->
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./assets/js/libs.min.js"></script>
+<script src="./assets/js/app.js" type="module"></script>
+<link rel="stylesheet" href="./assets/styles/footer.css">
+</body>
+
+</html>
