@@ -19,6 +19,16 @@ const replace = require('gulp-replace');
 const svgSprite = require('gulp-svg-sprite');
 const svgMin = require('gulp-svgmin');
 
+const include = require('gulp-file-include');
+
+function html() {
+    gulp.src(['app/_includes/*.html'])
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest('app'));
+};
 
 function css() {
     return src([
