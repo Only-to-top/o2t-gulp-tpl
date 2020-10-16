@@ -79,14 +79,27 @@ function scripts() {
 }
 
 
+function js() {
+    return src([
+        'app/assets/js/**/**.js',
+    ])
+        .pipe(dest('build/assets/js/'))
+        .pipe(browserSync.stream());
+}
+
+
 function images() {
     return src(['app/assets/img/**/*'])
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{ removeViewBox: false }],
-            interlaced: true,
-            optimizationLevel: 0 // 0 to 7
-        }))
+        .pipe(imagemin([
+            // imagemin.gifsicle({ interlaced: true }),
+            imagemin.mozjpeg({ quality: 95, progressive: true }),
+            imagemin.optipng({ optimizationLevel: 1 }),
+            imagemin.svgo({
+                plugins: [
+                    { removeViewBox: false }
+                ]
+            })
+        ]))
         .pipe(dest('build/assets/img/'))
         .pipe(browserSync.stream());
 }
@@ -100,7 +113,7 @@ function fonts() {
 
 
 function clean() { // Удаление папки «build»
-    return del('build/');
+    return del('build');
 }
 
 
@@ -108,10 +121,9 @@ function clean() { // Удаление папки «build»
 function watching() {
     watch(['app/**/*.{html,php}'], { usePolling: true }, html);
     watch(['app/assets/css/**/*.css', '!app/assets/css/*.min.css'], { usePolling: true }, styles);
-    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], { usePolling: true }, scripts);
-    watch('app/assets/img/**/*'), { usePolling: true }, images;
+    watch(['app/assets/js/**/*.js', '!app/assets/js/*.min.js'], { usePolling: true }, parallel(js, scripts));
+    watch(('app/assets/img/**/*'), { usePolling: true }, images).on('change', browserSync.reload);
     watch('app/assets/fonts/**/*'), { usePolling: true }, fonts;
-    // watch(['app/**/*.{html,php}'], { usePolling: true }).on('change', browserSync.reload);
 }
 
 
@@ -119,10 +131,11 @@ exports.html = html;
 exports.libs_css = libs_css;
 exports.styles = styles;
 exports.scripts = scripts;
+exports.js = js;
 exports.images = images;
 exports.fonts = fonts;
 
 exports.clean = clean;
 
 // Задачи по умолчанию
-exports.default = parallel(html, libs_css, styles, scripts, images, fonts, server, watching);
+exports.default = parallel(html, libs_css, styles, scripts, js, images, fonts, watching, server);
