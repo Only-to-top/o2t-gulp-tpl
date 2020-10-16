@@ -10,10 +10,10 @@ app/
         img/
         js/
         libs/
-        styles/
     index.html
     mail.php
     .htaccess
+build/
 </pre>
 
 <b>Libs:</b>
@@ -33,6 +33,5 @@ app/
     <li>Swiper Slider</li>
     <li>popup fancybox (+gallery)</li>
     <li>e-mail ajax send</li>
-    <li>equal heights</li>
     <li>tabs</li>
 </ul>
