@@ -1,9 +1,12 @@
 /* Hamburger button menu */
 
 .hamburger {
+    --width: 30px;
+    --humb-line-height: 4px;
+    --border-radius: 4px;
     position: relative;
     display: block;
-    width: 30px;
+    width: var(--width);
     height: 24px;
     background: transparent;
     border: none;
@@ -21,39 +24,37 @@
     display: block;
     position: absolute;
     right: 0;
-    height: 2px;
     background-color: currentColor;
-}
-
-.hamburger span:nth-child(1) {
-    width: 24px;
-    top: 0;
-}
-
-.hamburger span:nth-child(2) {
-    width: 20px;
-    bottom: 0;
+    border-radius: var(--border-radius);
+    height: var(--humb-line-height);
 }
 
 .is-active span {
     display: none;
 }
 
+.hamburger span:nth-child(1) {
+    width: var(--width);
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    width: var(--width);
+    bottom: 0;
+}
+
 .hamburger::before, .hamburger::after {
     content: '';
     display: block;
     width: 100%;
-    height: 2px;
     position: absolute;
     top: 50%;
     left: 50%;
-    background: currentColor;
     transform: translate(-50%, -50%);
     transition: transform 0.25s ease-in-out;
-}
-
-.hamburger.is-active {
-    border-color: transparent;
+    background: currentColor;
+    border-radius: var(--border-radius);
+    height: var(--humb-line-height);
 }
 
 .hamburger.is-active::before {
