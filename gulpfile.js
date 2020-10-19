@@ -5,6 +5,7 @@ const { src, dest, parallel, series, watch } = require('gulp');
 const postcss = require('gulp-postcss');
 const importCSS = require("postcss-import");
 const autoprefixer = require('autoprefixer');
+const sourcemaps = require('gulp-sourcemaps');
 
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');                  // объединение файлов
@@ -56,6 +57,22 @@ function styles() {
         'app/assets/css/**.css',
         '!app/assets/css/_*.css'
     ])
+        .pipe(sourcemaps.init())
+        .pipe(postcss([
+            importCSS,
+            autoprefixer
+        ]))
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest('build/assets/css'))
+        .pipe(browserSync.stream());
+}
+
+
+function css_deploy() {
+    return src([
+        'app/assets/css/**.css',
+        '!app/assets/css/_*.css'
+    ])
         .pipe(postcss([
             importCSS,
             autoprefixer
@@ -63,7 +80,6 @@ function styles() {
         .pipe(dest('build/assets/css'))
         .pipe(browserSync.stream());
 }
-
 
 function scripts() {
     return src([
@@ -130,6 +146,7 @@ function watching() {
 exports.html = html;
 exports.libs_css = libs_css;
 exports.styles = styles;
+exports.css_deploy = css_deploy;
 exports.scripts = scripts;
 exports.js = js;
 exports.images = images;
