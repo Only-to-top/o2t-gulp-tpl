@@ -40,7 +40,8 @@ function html() {
 
 function libs_css() {
     return src([
-        'app/assets/libs/bootstrap-reboot-4.4.1.min.css',
+        // 'app/assets/libs/bootstrap-reboot-4.4.1.min.css',
+        'app/assets/libs/minireset.min.css',
         'app/assets/libs/swiper-6.2.0/swiper-bundle_6_2_0.min.css',
         'app/assets/libs/fancybox/jquery.fancybox.min.css',
     ])
