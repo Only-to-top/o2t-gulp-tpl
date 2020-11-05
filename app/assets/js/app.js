@@ -6,11 +6,13 @@ import sliders from "./sliders.js";
 import tabsInit from "./tabs.js";
 import forms from "./forms.js";
 
-jQuery(() => {
-    menuInit();
-    popups();
-    sliders();
-});
+(function ($) {
+    $(document).ready(function () {
+        menuInit();
+        popups();
+        sliders();
+    });
+})(jQuery);
 
 document.addEventListener('DOMContentLoaded', () => {
     tabsInit();
