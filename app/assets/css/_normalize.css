@@ -88,17 +88,26 @@ body {
     font-weight: 400;
     line-height: 1.4;
     min-width: 320px;
+    text-rendering: optimizeLegibility;
 }
 
 .wrapper {
     overflow: hidden;
     position: relative;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
     height: -moz-available;
     height: -webkit-fill-available;
     height: fill-available;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+html, body, .wrapper {
+    min-height: 100vh;
+}
+
+.footer {
+    margin-top: auto;
 }
 
 body input, body select {
