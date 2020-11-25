@@ -1,13 +1,12 @@
 /*
-100 Extra Light (сверх легкий) or Ultra Light (ультра легкий)
-200 Light (легкий) or Thin (тонкий);
-300 Book (ровный) or Demi;
-400 Regular (Стандартный) or Normal (нормальный);
-500 Medium (средний);
-600 Semibold or Demibold (полужирный);
-700 Bold (жирный);
-800 Black (очень жирный) or Extra Bold (более ижрный) or Heavy (насыщенный жирный);
-900 Extra Black (сверхжирный) or Fat or Ultra Black (ультражирный) 
+100 Thin
+300 Light
+400 Regular / Normal
+500 Medium;
+600 Semibold / Demibold
+700 Bold
+800 Heavy / Extra Bold
+900 Black
 */
 
 @font-face {
