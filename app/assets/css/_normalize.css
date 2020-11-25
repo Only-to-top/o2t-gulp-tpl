@@ -1,11 +1,4 @@
-@font-face {
-    font-family: "Montserrat";
-    font-display: swap;
-    font-style: normal;
-    font-weight: 400;
-    src: url("../fonts/MontserratRegular.woff2") format("woff2");
-}
-
+@import "_fonts.css";
 :root {
     --ff: 'Montserrat', sans-serif;
     --accent: #FFD600;
