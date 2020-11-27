@@ -8,6 +8,7 @@ const sliders = () => {
             spaceBetween: 20,
             grabCursor: true,
             allowTouchMove: true, // touch листание
+            touchStartPreventDefault: false, // mouseup events
             loop: true,
             breakpoints: { // mobile first
                 0: { slidesPerView: 1 },
