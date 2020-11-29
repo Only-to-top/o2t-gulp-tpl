@@ -144,6 +144,7 @@ function watching() {
     watch('app/assets/fonts/**/*'), { usePolling: true }, fonts;
 }
 
+
 // Deploy на хостинг
 function rSync() {
 
@@ -164,7 +165,8 @@ exports.clean = clean;
 // Задачи по умолчанию
 exports.default = parallel(html, libs_css, styles, scripts, js, images, fonts, watching, server);
 
+// Deploy на хостинг по SSH
 exports.deploy = series(
-    // parallel(css_production, html_min),
+    parallel(html, libs_css, styles, scripts, js, images, fonts),
     rSync
 );
