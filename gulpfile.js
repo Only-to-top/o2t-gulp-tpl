@@ -8,6 +8,7 @@ const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 
 const browserSync = require('browser-sync').create();
+const rsync = require('gulp-rsync');
 const concat = require('gulp-concat');                  // объединение файлов
 const cleancss = require('gulp-clean-css');             // минификация css файлов
 const rename = require('gulp-rename');
@@ -143,6 +144,11 @@ function watching() {
     watch('app/assets/fonts/**/*'), { usePolling: true }, fonts;
 }
 
+// Deploy на хостинг
+function rSync() {
+
+}
+
 
 exports.html = html;
 exports.libs_css = libs_css;
@@ -157,3 +163,8 @@ exports.clean = clean;
 
 // Задачи по умолчанию
 exports.default = parallel(html, libs_css, styles, scripts, js, images, fonts, watching, server);
+
+exports.deploy = series(
+    // parallel(css_production, html_min),
+    rSync
+);
