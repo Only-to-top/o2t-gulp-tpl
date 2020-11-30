@@ -186,8 +186,10 @@ a:hover {
 
 .btn {
     cursor: pointer;
-    padding: 12px 35px;
     text-align: center;
     display: inline-grid;
     place-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 1px;
 }
