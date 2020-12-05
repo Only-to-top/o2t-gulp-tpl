@@ -16,6 +16,7 @@ const terser = require('gulp-terser');                  // для сжатия J
 const del = require('del');                             // удаление папок и файлов
 
 const fileInclude = require('gulp-file-include');
+const touch = require('gulp-touch-cmd');
 
 const imagemin = require('gulp-imagemin');
 
@@ -35,7 +36,8 @@ function html() {
     return src(['app/**/*.html'])
         .pipe(fileInclude())
         .pipe(dest('build/'))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
+        .pipe(touch());
 }
 
 

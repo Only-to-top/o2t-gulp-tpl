@@ -21,6 +21,7 @@
         "gulp-rsync": "0.0.9",
         "gulp-sourcemaps": "^3.0.0",
         "gulp-terser": "^2.0.0",
+        "gulp-touch-cmd": "0.0.1",
         "postcss-import": "^13.0.0"
     },
     "dependencies": {
