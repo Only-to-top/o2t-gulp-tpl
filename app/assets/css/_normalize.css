@@ -90,7 +90,6 @@ body {
     height: -moz-available;
     height: -webkit-fill-available;
     height: fill-available;
-    background-color: #fff;
     display: flex;
     flex-direction: column;
 }

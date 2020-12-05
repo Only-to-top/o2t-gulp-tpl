@@ -130,6 +130,13 @@ function fonts() {
 }
 
 
+function video() {
+    return src(['app/assets/video/**/*'])
+        .pipe(dest('build/assets/video/'))
+        .pipe(browserSync.stream());
+}
+
+
 function clean() { // Удаление папки «build»
     return del('build');
 }
@@ -159,14 +166,19 @@ exports.scripts = scripts;
 exports.js = js;
 exports.images = images;
 exports.fonts = fonts;
+exports.video = video;
 
 exports.clean = clean;
 
+
 // Задачи по умолчанию
-exports.default = parallel(html, libs_css, styles, scripts, js, images, fonts, watching, server);
+exports.default = series(
+    clean,
+    parallel(html, libs_css, styles, scripts, js, images, fonts, video, watching, server)
+);
 
 // Deploy на хостинг по SSH
 exports.deploy = series(
-    parallel(html, libs_css, styles, scripts, js, images, fonts),
+    parallel(html, libs_css, styles, scripts, js, images, fonts, video),
     rSync
 );

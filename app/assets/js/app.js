@@ -11,6 +11,8 @@ import forms from "./forms.js";
         menuInit();
         popups();
         sliders();
+
+        $("img, a").on("dragstart", function (e) { e.preventDefault(); });
     });
 })(jQuery);
 
@@ -18,6 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
     tabsInit();
     forms();
 });
+
+
+window.addEventListener('load', () => {
+
+});
+
 
 if (document.documentElement.clientWidth < 768) {
 
