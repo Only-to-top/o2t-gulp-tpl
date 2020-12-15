@@ -48,18 +48,22 @@ function libs_css() {
         'app/assets/libs/swiper-6.2.0/swiper-bundle_6_2_0.min.css',
         'app/assets/libs/fancybox/jquery.fancybox.min.css',
     ])
+        .pipe(sourcemaps.init())
         .pipe(concat('libs.css'))
         .pipe(cleancss())
         .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.write('.'))
         .pipe(dest('build/assets/css/'))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
+        .pipe(touch());
 }
 
 
 function styles() {
     return src([
         'app/assets/css/**.css',
-        '!app/assets/css/_*.css'
+        '!app/assets/css/_*.css',
+        '!app/assets/css/libs.min.css'
     ])
         .pipe(sourcemaps.init())
         .pipe(postcss([
@@ -68,21 +72,24 @@ function styles() {
         ]))
         .pipe(sourcemaps.write('.'))
         .pipe(dest('build/assets/css'))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
+        .pipe(touch());
 }
 
 
 function css_deploy() {
     return src([
         'app/assets/css/**.css',
-        '!app/assets/css/_*.css'
+        '!app/assets/css/_*.css',
+        '!app/assets/css/libs.min.css'
     ])
         .pipe(postcss([
             importCSS,
             autoprefixer
         ]))
         .pipe(dest('build/assets/css'))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
+        .pipe(touch());
 }
 
 function scripts() {
@@ -95,7 +102,8 @@ function scripts() {
         .pipe(concat('libs.min.js'))
         .pipe(terser())
         .pipe(dest('build/assets/js/'))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
+        .pipe(touch());
 }
 
 

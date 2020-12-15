@@ -12,6 +12,7 @@
     border: none;
     transition: 0.25s ease-in-out;
     outline: none;
+    z-index: 2;
 }
 
 @media only screen and (min-width: 992.1px) {
