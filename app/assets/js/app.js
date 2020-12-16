@@ -30,3 +30,8 @@ window.addEventListener('load', () => {
 if (document.documentElement.clientWidth < 768) {
 
 };
+
+
+$(window).on('scroll touchmove', () => {
+
+});
