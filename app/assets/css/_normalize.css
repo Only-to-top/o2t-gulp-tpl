@@ -47,17 +47,13 @@ body {
     color: var(--text);
     font-size: 16px;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.5;
     min-width: 320px;
     text-rendering: optimizeLegibility;
 }
 
 .wrapper {
-    overflow-x: hidden;
     position: relative;
-    height: -moz-available;
-    height: -webkit-fill-available;
-    height: fill-available;
     display: flex;
     flex-direction: column;
 }
