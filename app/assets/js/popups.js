@@ -4,7 +4,7 @@ const popups = () => {
         animationEffect: 'fade',
         animationDuration: 555,
         btnTpl: {
-            smallBtn: `<button data-fancybox-close class="fancybox-button fancybox-close-small" title="Закрыть">×</button>`,
+            smallBtn: `<button data-fancybox-close class="fancybox-button fancybox-close-small" title="Закрыть">✕</button>`,
         },
         lang: "ru",
         i18n: {
@@ -18,6 +18,24 @@ const popups = () => {
             $('.fancybox-slide').css('overflow', 'auto');
         }
     });
+
+    $('.btn-order').on('click', () => {
+        $.fancybox.open({
+            src: '#popup_order',
+            type: 'inline', // Content type: image|inline|ajax|iframe|html (optional)
+            opts: {
+                topRatio: 0,
+                btnTpl: {
+                    smallBtn: `<button data-fancybox-close class="fancybox-button fancybox-close-small">✕</button>`,
+                },
+                afterLoad: function (instance, current) {
+                    $("#popup_order").parents('.fancybox-slide').css({ 'text-align': 'right' });
+                },
+            },
+
+        });
+    });
+
     // popup gallery
     $('[data-fancybox="gallery"]').fancybox({
         loop: true,

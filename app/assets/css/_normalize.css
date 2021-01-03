@@ -27,6 +27,7 @@ select:focus, select:hover, option:hover, option:focus {
 button {
     border: none;
     transition: 0.2s linear all;
+    cursor: pointer;
 }
 
 select[disabled], button[disabled] {
@@ -106,6 +107,11 @@ ul, ol {
     list-style-position: inside;
     margin: 0;
     padding: 0;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
 }
 
 .responsive {

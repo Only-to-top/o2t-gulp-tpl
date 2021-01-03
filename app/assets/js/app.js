@@ -22,16 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-window.addEventListener('load', () => {
-
-});
+window.addEventListener('load', () => { });
 
 
-if (document.documentElement.clientWidth < 768) {
-
-};
+if (document.documentElement.clientWidth < 768) { };
 
 
-$(window).on('scroll touchmove', () => {
-
-});
+$(document).on('scroll touchmove', () => { });
