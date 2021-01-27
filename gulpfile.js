@@ -1,6 +1,6 @@
 'use strict';
 
-const { src, dest, parallel, series, watch } = require('gulp');
+const { src, dest, parallel, series, watch, lastRun } = require('gulp');
 
 const postcss = require('gulp-postcss');
 const importCSS = require("postcss-import");
@@ -64,7 +64,7 @@ function styles() {
         'app/assets/css/**.css',
         '!app/assets/css/_*.css',
         '!app/assets/css/libs.min.css'
-    ])
+    ], { since: lastRun(styles) })
         .pipe(sourcemaps.init())
         .pipe(postcss([
             importCSS,
@@ -110,14 +110,14 @@ function scripts() {
 function js() {
     return src([
         'app/assets/js/**/**.js',
-    ])
+    ], { since: lastRun(js) })
         .pipe(dest('build/assets/js/'))
         .pipe(browserSync.stream());
 }
 
 
 function images() {
-    return src(['app/assets/img/**/*'])
+    return src(['app/assets/img/**/*'], { since: lastRun(images) })
         .pipe(imagemin([
             // imagemin.gifsicle({ interlaced: true }),
             imagemin.mozjpeg({ quality: 95, progressive: true }),
