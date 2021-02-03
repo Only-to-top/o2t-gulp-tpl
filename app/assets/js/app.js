@@ -1,5 +1,3 @@
-'use strict';
-
 import menuInit from "./menu.js";
 import popups from "./popups.js";
 import sliders from "./sliders.js";

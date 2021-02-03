@@ -8,7 +8,7 @@
     "author": "Only-to-top.ru",
     "license": "ISC",
     "devDependencies": {
-        "autoprefixer": "^10.2.3",
+        "autoprefixer": "^10.2.4",
         "browser-sync": "^2.26.14",
         "del": "^6.0.0",
         "gulp": "^4.0.2",
