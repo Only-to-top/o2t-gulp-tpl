@@ -33,7 +33,7 @@ function server() {
 
 
 function html() {
-    return src(['app/**/*.html'])
+    return src(['app/**/*.{html,php}'])
         .pipe(fileInclude())
         .pipe(dest('build/'))
         .pipe(browserSync.stream())
