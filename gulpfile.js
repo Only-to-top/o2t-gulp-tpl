@@ -8,7 +8,7 @@ const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 
 const browserSync = require('browser-sync').create();
-const rsync = require('gulp-rsync');
+// const rsync = require('gulp-rsync');
 const concat = require('gulp-concat');                  // объединение файлов
 const cleancss = require('gulp-clean-css');             // минификация css файлов
 const rename = require('gulp-rename');
