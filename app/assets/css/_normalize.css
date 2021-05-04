@@ -3,7 +3,7 @@
 :root {
     --ff: 'Montserrat', sans-serif;
     --accent: #FFD600;
-    --text: red;
+    --text: #000;
 }
 
 ::selection {

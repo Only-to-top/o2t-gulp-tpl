@@ -3,8 +3,8 @@
 const { src, dest, parallel, series, watch, lastRun } = require('gulp');
 
 const postcss = require('gulp-postcss');
-const importCSS = require("postcss-import");
-const autoprefixer = require('autoprefixer');
+const importStyles = require("postcss-import");
+const autoPrefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 
 const browserSync = require('browser-sync').create();
@@ -64,11 +64,11 @@ function styles() {
         'app/assets/css/**.css',
         '!app/assets/css/_*.css',
         '!app/assets/css/libs.min.css'
-    ], { since: lastRun(styles) })
+    ])
         .pipe(sourcemaps.init())
         .pipe(postcss([
-            importCSS,
-            autoprefixer
+            importStyles,
+            autoPrefixer
         ]))
         .pipe(sourcemaps.write('.'))
         .pipe(dest('build/assets/css'))
@@ -84,8 +84,8 @@ function css_deploy() {
         '!app/assets/css/libs.min.css'
     ])
         .pipe(postcss([
-            importCSS,
-            autoprefixer
+            importStyles,
+            autoPrefixer
         ]))
         .pipe(dest('build/assets/css'))
         .pipe(browserSync.stream())

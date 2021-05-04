@@ -22,9 +22,10 @@
         "gulp-sourcemaps": "^3.0.0",
         "gulp-terser": "^2.0.1",
         "gulp-touch-cmd": "0.0.1",
-        "postcss-import": "^14.0.0"
+        "postcss-import": "^14.0.1"
     },
     "dependencies": {
+        "npm": "^7.11.2",
         "postcss": "^8.2.13"
     },
     "browserslist": [
