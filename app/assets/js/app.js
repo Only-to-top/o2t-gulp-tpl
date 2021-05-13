@@ -9,8 +9,7 @@ import forms from "./forms.js";
         menuInit();
         popups();
         sliders();
-
-        $("img, a").on("dragstart", (e) => { e.preventDefault(); });
+        $("img, a").on("dragstart", e => e.preventDefault());
     });
 })(jQuery);
 
