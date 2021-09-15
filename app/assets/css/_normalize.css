@@ -24,7 +24,7 @@ select:focus, select:hover, option:hover, option:focus {
     opacity: 1;
 }
 
-button {
+button, input[type=submit] {
     border: none;
     transition: 0.2s linear all;
     cursor: pointer;
@@ -64,6 +64,11 @@ html, body, .wrapper {
 
 .footer {
     margin-top: auto;
+}
+
+input, textarea {
+    width: 100%;
+    max-width: 100%;
 }
 
 body input, body select {
@@ -110,29 +115,11 @@ table {
     max-width: 100%;
 }
 
-.responsive {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
 .cover {
     width: 100%;
     height: 100%;
     max-width: 100%;
     object-fit: cover;
-}
-
-.tal {
-    text-align: left;
-}
-
-.tac {
-    text-align: center;
-}
-
-.tar {
-    text-align: right;
 }
 
 b, strong {
@@ -145,6 +132,10 @@ b, strong {
 
 a, input, svg path {
     transition: 0.2s linear all;
+}
+
+a {
+    text-decoration: none;
 }
 
 a:hover {
